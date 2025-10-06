@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Paleta principal -->
+    <color name="color_primary">#4F46E5</color>
+    <color name="color_primary_pressed">#4338CA</color>
+    <color name="color_secondary">#06B6D4</color>
+
+    <!-- Fondos y superficies -->
+    <color name="color_background">#FFFFFF</color>
+    <color name="color_surface">#F9FAFB</color>
+
+    <!-- Texto -->
+    <color name="text_primary">#111827</color>
+    <color name="text_secondary">#4B5563</color>
+
+    <!-- Bordes y divisores -->
+    <color name="divider">#E5E7EB</color>
+
+    <!-- Estados -->
+    <color name="success">#16A34A</color>
+    <color name="warning">#F59E0B</color>
+    <color name="error">#EF4444</color>
+
+    <!-- Colores básicos por si acaso -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+</resources>

@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Títulos principales -->
+    <style name="TextAppearance.GameHub.H1">
+        <item name="android:fontFamily">@font/orbitron</item>
+        <item name="android:textSize">@dimen/text_h1</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Texto normal -->
+    <style name="TextAppearance.GameHub.Body">
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">@dimen/text_body</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+</resources>
