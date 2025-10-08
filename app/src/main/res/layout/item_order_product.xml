@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="@color/color_surface"
+    android:layout_marginBottom="8dp">
+
+    <ImageView
+        android:id="@+id/ivProductImage"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_gamepad" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp">
+
+        <TextView
+            android:id="@+id/tvProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre del producto"
+            android:fontFamily="@font/inter_18pt_bold"
+            android:textColor="@color/text_primary" />
+
+        <TextView
+            android:id="@+id/tvProductQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cantidad: 2"
+            android:fontFamily="@font/inter_18pt_regular"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvProductPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$59.99"
+        android:fontFamily="@font/inter_18pt_bold"
+        android:textColor="@color/text_primary" />
+
+</LinearLayout>

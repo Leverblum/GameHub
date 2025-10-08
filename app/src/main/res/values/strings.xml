@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">GameHub</string>
+    <string name="profile_avatar">Avatar de perfil</string>
+    <string name="cart">Carrito</string>
+    <string name="profile">Perfil</string>
+    <string name="product_image">Imagen del producto</string>
+    <string name="add_to_cart">Agregar al carrito</string>
+    <string name="store_image">Imagen de la tienda</string>
 </resources>

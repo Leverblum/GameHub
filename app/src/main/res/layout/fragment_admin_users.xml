@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/color_background">
+
+    <!-- 👤 Título -->
+    <TextView
+        android:id="@+id/tvManageUsersTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gestión de Usuarios"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/orbitron_bold"
+        android:textColor="@color/text_primary"
+        android:layout_marginBottom="12dp" />
+
+    <!-- 🔍 Barra de búsqueda -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_user"
+                app:tint="@color/text_secondary" />
+
+            <EditText
+                android:id="@+id/etSearchUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Buscar usuario..."
+                android:background="@null"
+                android:paddingStart="8dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 📃 Lista de usuarios -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvUsers"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false" />
+
+    <!-- ➕ Botón para agregar usuario -->
+    <Button
+        android:id="@+id/btnAddUser"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:drawableStart="@drawable/ic_add"
+        android:text="Agregar usuario"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/inter_18pt_medium"
+        android:textAllCaps="false"
+        android:textColor="@color/text_primary"
+        android:backgroundTint="@color/color_primary" />
+
+</LinearLayout>

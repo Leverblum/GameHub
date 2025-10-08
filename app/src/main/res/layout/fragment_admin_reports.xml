@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/adminReportsScroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 📊 Título -->
+        <TextView
+            android:id="@+id/tvReportsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reportes y Estadísticas"
+            android:textSize="22sp"
+            android:fontFamily="@font/orbitron_bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="20dp" />
+
+        <!-- KPI Cards -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Ventas Totales -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/color_surface"
+                android:padding="16dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_chart"
+                    app:tint="@color/color_primary" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ventas Totales"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_primary"
+                        android:fontFamily="@font/inter_18pt_medium" />
+
+                    <TextView
+                        android:id="@+id/tvTotalSales"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$124,560"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_primary" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Usuarios activos -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/color_surface"
+                android:padding="16dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_user"
+                    app:tint="@color/color_primary" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Usuarios Activos"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_primary"
+                        android:fontFamily="@font/inter_18pt_medium" />
+
+                    <TextView
+                        android:id="@+id/tvActiveUsers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1,250"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_primary" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Productos vendidos -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/color_surface"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_package"
+                    app:tint="@color/color_primary" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Productos Vendidos"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_primary"
+                        android:fontFamily="@font/inter_18pt_medium" />
+
+                    <TextView
+                        android:id="@+id/tvProductsSold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3,480"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_primary" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

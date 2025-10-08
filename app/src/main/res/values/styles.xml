@@ -2,16 +2,60 @@
 
     <!-- Títulos principales -->
     <style name="TextAppearance.GameHub.H1">
-        <item name="android:fontFamily">@font/orbitron</item>
+        <item name="android:fontFamily">@font/orbitron_bold</item>
         <item name="android:textSize">@dimen/text_h1</item>
         <item name="android:textColor">@color/text_primary</item>
     </style>
 
     <!-- Texto normal -->
     <style name="TextAppearance.GameHub.Body">
-        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:fontFamily">@font/inter_18pt_regular</item>
         <item name="android:textSize">@dimen/text_body</item>
         <item name="android:textColor">@color/text_secondary</item>
     </style>
+
+    <!-- Botón principal (general para toda la app) -->
+    <style name="Widget.GameHub.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/color_primary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/inter_18pt_bold</item>
+        <item name="android:textSize">@dimen/text_h2</item>
+        <item name="android:insetTop">12dp</item>
+        <item name="android:insetBottom">12dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:cornerRadius">12dp</item>
+    </style>
+
+    <!-- Botón secundario -->
+    <style name="Widget.GameHub.Button.Secondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:strokeColor">@color/color_primary</item>
+        <item name="android:strokeWidth">2dp</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:fontFamily">@font/inter_18pt_bold</item>
+        <item name="android:textSize">@dimen/text_h2</item>
+        <item name="android:cornerRadius">12dp</item>
+    </style>
+
+    <!-- Reutilizable: fila de opción del perfil -->
+    <style name="Profile.OptionRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:background">@color/color_surface</item>
+    </style>
+
+    <!-- btn logout background (si quieres rojo claro detrás del texto) -->
+    <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" android:padding="8dp">
+        <solid android:color="@android:color/transparent"/>
+        <corners android:radius="10dp" />
+    </shape>
+
 
 </resources>

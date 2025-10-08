@@ -1,6 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/adminDashboardScroll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- 🧑‍💼 Encabezado -->
+        <TextView
+            android:id="@+id/tvAdminTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Panel de Administración"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/orbitron_bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 📦 Gestión de productos -->
+        <LinearLayout
+            android:id="@+id/optManageProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:background="@color/color_surface"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_package"
+                app:tint="@color/text_secondary" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Gestionar Productos"
+                android:textSize="16sp"
+                android:fontFamily="@font/inter_18pt_medium"
+                android:textColor="@color/text_primary"
+                android:layout_marginStart="12dp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_back"
+                android:rotation="180"
+                app:tint="@color/text_secondary" />
+        </LinearLayout>
+
+        <!-- 👤 Gestión de usuarios -->
+        <LinearLayout
+            android:id="@+id/optManageUsers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:background="@color/color_surface"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_user"
+                app:tint="@color/text_secondary" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Gestionar Usuarios"
+                android:textSize="16sp"
+                android:fontFamily="@font/inter_18pt_medium"
+                android:textColor="@color/text_primary"
+                android:layout_marginStart="12dp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_back"
+                android:rotation="180"
+                app:tint="@color/text_secondary" />
+        </LinearLayout>
+
+        <!-- 📊 Reportes -->
+        <LinearLayout
+            android:id="@+id/optReports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:background="@color/color_surface"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_chart"
+                app:tint="@color/text_secondary" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Reportes y Estadísticas"
+                android:textSize="16sp"
+                android:fontFamily="@font/inter_18pt_medium"
+                android:textColor="@color/text_primary"
+                android:layout_marginStart="12dp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_back"
+                android:rotation="180"
+                app:tint="@color/text_secondary" />
+        </LinearLayout>
+
+        <!-- ⚙️ Configuración -->
+        <LinearLayout
+            android:id="@+id/optSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:background="@color/color_surface">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_settings"
+                app:tint="@color/text_secondary" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Configuración del Sistema"
+                android:textSize="16sp"
+                android:fontFamily="@font/inter_18pt_medium"
+                android:textColor="@color/text_primary"
+                android:layout_marginStart="12dp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_back"
+                android:rotation="180"
+                app:tint="@color/text_secondary" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

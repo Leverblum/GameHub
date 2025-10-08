@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/orderDetailRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Encabezado -->
+        <TextView
+            android:id="@+id/tvOrderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pedido #12345"
+            android:textSize="22sp"
+            android:fontFamily="@font/orbitron_bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvOrderDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha: 05/10/2025"
+            android:fontFamily="@font/inter_18pt_regular"
+            android:textColor="@color/text_secondary" />
+
+        <TextView
+            android:id="@+id/tvOrderStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado: Entregado"
+            android:fontFamily="@font/inter_18pt_bold"
+            android:textColor="@color/color_primary"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Lista de productos -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Productos comprados"
+            android:fontFamily="@font/orbitron_bold"
+            android:textSize="18sp"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="8dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvOrderProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false" />
+
+        <!-- Resumen -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="@color/color_surface"
+            android:layout_marginTop="16dp"
+            android:elevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subtotal"
+                    android:fontFamily="@font/inter_18pt_regular"
+                    android:textColor="@color/text_secondary" />
+
+                <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvSubtotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$119.98"
+                    android:fontFamily="@font/inter_18pt_bold"
+                    android:textColor="@color/text_primary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Impuestos"
+                    android:fontFamily="@font/inter_18pt_regular"
+                    android:textColor="@color/text_secondary" />
+
+                <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvTaxes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$22.80"
+                    android:fontFamily="@font/inter_18pt_bold"
+                    android:textColor="@color/text_primary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total"
+                    android:fontFamily="@font/inter_18pt_bold"
+                    android:textColor="@color/text_primary" />
+
+                <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$142.78"
+                    android:fontFamily="@font/inter_18pt_bold"
+                    android:textColor="@color/color_primary" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

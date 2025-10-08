@@ -1,6 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/homeRoot"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_background"
+    android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- AppBar simple: logo + título -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_gamepad"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GameHub"
+            android:layout_marginStart="12dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/orbitron_bold"
+            android:textColor="@color/text_primary" />
+
+        <!-- right side space for icons -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/btnHomeCart"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_cart"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cart" />
+
+        <ImageButton
+            android:id="@+id/btnHomeProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_profile"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/profile"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+    <!-- SearchBar -->
+    <EditText
+        android:id="@+id/etSearchHome"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
+        android:hint="Buscar juegos..."
+        android:drawableStart="@drawable/ic_search"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/edittext_background"
+        android:inputType="text" />
+
+    <!-- Section: Recomendados (horizontal) -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recomendados"
+        android:textSize="18sp"
+        android:fontFamily="@font/inter_18pt_bold"
+        android:textColor="@color/text_primary"
+        android:layout_marginTop="16dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFeatured"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp" />
+
+    <!-- Section: Últimos lanzamientos (vertical list) -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Últimos lanzamientos"
+        android:textSize="18sp"
+        android:fontFamily="@font/inter_18pt_bold"
+        android:textColor="@color/text_primary"
+        android:layout_marginTop="16dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLatest"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>
