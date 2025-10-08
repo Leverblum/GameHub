@@ -33,7 +33,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:strokeColor">@color/color_primary</item>
-        <item name="android:strokeWidth">2dp</item>
+        <item name="strokeWidth">2dp</item>
         <item name="android:textColor">@color/color_primary</item>
         <item name="android:fontFamily">@font/inter_18pt_bold</item>
         <item name="android:textSize">@dimen/text_h2</item>
