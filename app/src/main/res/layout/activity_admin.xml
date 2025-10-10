@@ -130,39 +130,5 @@
                 app:tint="@color/text_secondary" />
         </LinearLayout>
 
-        <!-- ⚙️ Configuración -->
-        <LinearLayout
-            android:id="@+id/optSettings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:padding="16dp"
-            android:background="@color/color_surface">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_settings"
-                app:tint="@color/text_secondary" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Configuración del Sistema"
-                android:textSize="16sp"
-                android:fontFamily="@font/inter_18pt_medium"
-                android:textColor="@color/text_primary"
-                android:layout_marginStart="12dp" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_back"
-                android:rotation="180"
-                app:tint="@color/text_secondary" />
-        </LinearLayout>
-
     </LinearLayout>
 </ScrollView>
