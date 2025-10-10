@@ -183,35 +183,6 @@
                 app:tint="@color/text_secondary" />
         </LinearLayout>
 
-        <!-- Opción: Configuración -->
-        <LinearLayout
-            android:id="@+id/option_settings"
-            style="@style/Profile.OptionRow"
-            android:layout_marginBottom="8dp">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_settings"
-                app:tint="@color/text_secondary" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/inter_18pt_medium"
-                android:text="Configuración"
-                android:textColor="@color/text_primary" />
-
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:rotation="180"
-                android:src="@drawable/ic_back"
-                app:tint="@color/text_secondary" />
-        </LinearLayout>
-
         <!-- Opción: Cambiar contraseña -->
         <LinearLayout
             android:id="@+id/option_change_password"

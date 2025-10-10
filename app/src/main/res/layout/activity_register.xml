@@ -58,6 +58,36 @@
             android:background="@drawable/edittext_background"
             android:inputType="textPassword" />
 
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edittext_background"
+            android:hint="Teléfono (Opcional)"
+            android:inputType="phone"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edittext_background"
+            android:hint="Dirección (Opcional)"
+            android:inputType="textPostalAddress"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/etDob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edittext_background"
+            android:hint="Fecha de nacimiento (Opcional)"
+            android:inputType="date"
+            android:padding="12dp" />
+
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"

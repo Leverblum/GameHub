@@ -6,66 +6,57 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gamehub.R
 import com.example.gamehub.models.Product
-import com.example.gamehub.utils.NavigationListener
+import com.example.gamehub.viewmodels.CartViewModel // CAMBIO: Importamos el ViewModel
+import com.google.android.material.card.MaterialCardView
 
-// El Adapter recibe una lista de productos y el listener de navegación.
+// CAMBIO: El constructor ahora pide un CartViewModel
 class ProductAdapter(
     private var products: List<Product>,
-    private val navigationListener: NavigationListener
+    private val cartViewModel: CartViewModel
 ) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
-    // 1. El ViewHolder: Representa una única fila (item_product.xml)
-    // Contiene las referencias a las vistas (TextViews, ImageView, etc.)
+    var onProductClick: ((Product) -> Unit)? = null
+
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val root: CardView = itemView.findViewById(R.id.rootCardView)
-        val productImage: ImageView = itemView.findViewById(R.id.ivProductImage)
-        val productTitle: TextView = itemView.findViewById(R.id.tvProductTitle)
-        val productPrice: TextView = itemView.findViewById(R.id.tvPrice)
-        val addButton: ImageButton = itemView.findViewById(R.id.btnAdd)
+        val root: MaterialCardView = itemView.findViewById(R.id.cardRoot)
+        val productImage: ImageView = itemView.findViewById(R.id.ivGameImage)
+        val productTitle: TextView = itemView.findViewById(R.id.tvGameTitle)
+        val productPrice: TextView = itemView.findViewById(R.id.tvGamePrice)
+        val addButton: ImageButton = itemView.findViewById(R.id.btnAddGame)
     }
 
-    // 2. onCreateViewHolder: Se llama cuando RecyclerView necesita una nueva fila.
-    // Infla (crea) el layout XML y lo pasa al ViewHolder.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+        // Usa el layout que prefieres: item_game_card
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_product, parent, false)
+            .inflate(R.layout.item_game_card, parent, false)
         return ProductViewHolder(view)
     }
 
-    // 3. onBindViewHolder: Se llama para mostrar los datos en una fila específica.
-    // Conecta los datos del producto (de la lista) con las vistas del ViewHolder.
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = products[position]
-
-        // Asignamos los datos del producto a las vistas
         holder.productTitle.text = product.name
         holder.productPrice.text = "$${product.price}"
-        // Aquí iría la lógica para cargar la imagen con una librería como Glide o Picasso
-        // holder.productImage.load(product.imageUrl)
+        holder.productImage.setImageResource(R.drawable.ic_gamepad) // Placeholder
 
-        // ¡AQUÍ ESTÁ LA MAGIA DE LA NAVEGACIÓN!
-        // Configuramos el click en toda la tarjeta (el CardView).
         holder.root.setOnClickListener {
-            // Usamos la interfaz para notificar que se hizo clic en este producto.
-            navigationListener.onNavigateToProductDetail(product)
+            onProductClick?.invoke(product)
         }
 
-        // También puedes manejar otros clics, como el del botón de añadir
         holder.addButton.setOnClickListener {
-            // Lógica para añadir al carrito (lo haremos más adelante)
+            // CAMBIO: Llama al método centralizado del ViewModel
+            cartViewModel.addProductToCart(product)
+            Toast.makeText(holder.itemView.context, "${product.name} añadido al carrito", Toast.LENGTH_SHORT).show()
         }
     }
 
-    // 4. getItemCount: Devuelve el número total de elementos en la lista.
-    override fun getItemCount(): Int {
-        return products.size
-    }
+    override fun getItemCount() = products.size
 
-    // TAREA PARA TI: Añade un ID al CardView en item_product.xml
-    // Reemplaza <androidx.cardview.widget.CardView ...>
-    // con <androidx.cardview.widget.CardView android:id="@+id/rootCardView" ...>
+    fun updateProducts(newProducts: List<Product>) {
+        products = newProducts
+        notifyDataSetChanged()
+    }
 }

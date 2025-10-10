@@ -2,84 +2,107 @@ package com.example.gamehub.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.gamehub.R
 import com.example.gamehub.ui.auth.LoginActivity
 import com.example.gamehub.ui.orders.OrderHistoryFragment
-import com.example.gamehub.ui.settings.SettingsFragment
+import com.example.gamehub.ui.payment.PaymentMethodsFragment
+import com.example.gamehub.ui.stores.StoresFragment
+import com.example.gamehub.viewmodels.ProfileViewModel
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+    // Obtenemos la instancia del ViewModel compartida a nivel de actividad
+    private val profileViewModel: ProfileViewModel by activityViewModels()
 
-        // Encontrar todas las vistas en las que se puede hacer clic
-        val btnEditProfileShort: Button = view.findViewById(R.id.btnEditProfileShort)
-        val optEditProfile: View = view.findViewById(R.id.opt_edit_profile) // El include se trata como una View
-        val optOrderHistory: LinearLayout = view.findViewById(R.id.opt_order_history)
-        // val optPaymentMethods: LinearLayout = view.findViewById(R.id.opt_payment_methods) // Descomentar cuando exista
-        // val optStores: LinearLayout = view.findViewById(R.id.opt_stores) // Descomentar cuando exista
-        val optSettings: LinearLayout = view.findViewById(R.id.opt_settings)
-        val optChangePassword: LinearLayout = view.findViewById(R.id.opt_change_password)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // --- Vinculación de Vistas ---
+        val tvProfileName: TextView = view.findViewById(R.id.tvProfileName)
+        val tvProfileEmail: TextView = view.findViewById(R.id.tvProfileEmail)
+
+        val optEditProfile: LinearLayout = view.findViewById(R.id.option_edit_profile)
+        val optOrderHistory: LinearLayout = view.findViewById(R.id.option_order_history)
+        val optPaymentMethods: LinearLayout = view.findViewById(R.id.option_payment_methods)
+        val optStores: LinearLayout = view.findViewById(R.id.option_stores)
+        val optChangePassword: LinearLayout = view.findViewById(R.id.option_change_password)
         val btnLogout: Button = view.findViewById(R.id.btnLogout)
 
-        // Configurar los listeners
-        btnEditProfileShort.setOnClickListener { navigateTo(EditProfileFragment()) }
-        optEditProfile.setOnClickListener { navigateTo(EditProfileFragment()) }
-        optOrderHistory.setOnClickListener { navigateTo(OrderHistoryFragment()) }
-        optSettings.setOnClickListener { navigateTo(SettingsFragment()) }
-        optChangePassword.setOnClickListener { navigateTo(ChangePasswordFragment()) }
+        // --- Observadores del ViewModel ---
 
-        // Listeners para opciones futuras (actualmente comentados)
-        // optPaymentMethods.setOnClickListener { ... }
-        // optStores.setOnClickListener { ... }
-
-        btnLogout.setOnClickListener {
-            showLogoutConfirmationDialog()
+        // Observador para los datos del usuario. Se dispara cada vez que los datos cambian.
+        profileViewModel.user.observe(viewLifecycleOwner) { user ->
+            user?.let {
+                // Si el usuario no es nulo, actualizamos la UI del perfil
+                tvProfileName.text = it.name
+                tvProfileEmail.text = it.email
+                // Aquí podrías usar Glide o Picasso para cargar el avatar real
+                // ivAvatar.load(it.avatarUrl)
+            }
         }
 
-        return view
-    }
-
-    /**
-     * Función reutilizable para navegar a otro fragment.
-     * @param fragment La instancia del fragment al que se desea navegar.
-     */
-    private fun navigateTo(fragment: Fragment) {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null) // Permite volver al perfil con el botón "Atrás"
-            .commit()
-    }
-
-    /**
-     * Muestra un diálogo de alerta para confirmar el cierre de sesión.
-     */
-    private fun showLogoutConfirmationDialog() {
-        AlertDialog.Builder(requireContext())
-            .setTitle("Cerrar Sesión")
-            .setMessage("¿Estás seguro de que deseas cerrar sesión?")
-            .setPositiveButton("Sí, cerrar sesión") { dialog, _ ->
-                // Lógica de Logout
-                Toast.makeText(context, "Sesión cerrada", Toast.LENGTH_SHORT).show()
-
-                // Creamos un intent para ir a LoginActivity
-                val intent = Intent(activity, LoginActivity::class.java)
-                // Limpiamos la pila de actividades para que el usuario no pueda volver
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        // Observador para el evento de cierre de sesión.
+        profileViewModel.logoutEvent.observe(viewLifecycleOwner) { hasLoggedOut ->
+            if (hasLoggedOut) {
+                // Navegar a la pantalla de Login y limpiar la pila de actividades
+                val intent = Intent(requireContext(), LoginActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
                 startActivity(intent)
+                // Reseteamos el evento para que no se vuelva a disparar
+                profileViewModel.onLogoutEventHandled()
             }
-            .setNegativeButton("Cancelar", null)
-            .show()
+        }
+
+        // --- Lógica de Clics ---
+
+        btnLogout.setOnClickListener {
+            profileViewModel.logout()
+        }
+
+        // ================== INICIO DEL CAMBIO ==================
+        // Listener para "Editar Perfil" ahora navega al fragmento de edición
+        optEditProfile.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, EditProfileFragment()) // Navega a EditProfileFragment
+                .addToBackStack(null) // Permite volver atrás al perfil
+                .commit()
+        }
+        // =================== FIN DEL CAMBIO ====================
+
+        optOrderHistory.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, OrderHistoryFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        optPaymentMethods.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, PaymentMethodsFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        optStores.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, StoresFragment()) // Navega a StoresFragment
+                .addToBackStack(null)
+                .commit()
+        }
+        optChangePassword.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, ChangePasswordFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
     }
 }

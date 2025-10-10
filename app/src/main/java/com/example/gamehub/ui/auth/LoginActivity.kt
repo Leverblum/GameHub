@@ -2,7 +2,7 @@ package com.example.gamehub.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Patterns // <-- NUEVO IMPORT para la validación de email
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -57,8 +57,6 @@ class LoginActivity : AppCompatActivity() {
         val email = etEmail.text.toString().trim().lowercase()
         val password = etPassword.text.toString().trim()
 
-        // --- INICIO DE LA NUEVA LÓGICA DE VALIDACIÓN ---
-
         // Validar campos vacíos
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Email y contraseña son obligatorios", Toast.LENGTH_SHORT).show()
@@ -72,24 +70,24 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        // --- FIN DE LA NUEVA LÓGICA DE VALIDACIÓN ---
-
         // 5. Lógica de login usando el repositorio
         val users = prefsRepository.getUsers()
         val foundUser = users.find { it.email.equals(email, ignoreCase = true) && it.password == password }
 
         if (foundUser != null) {
             // Usuario y contraseña correctos
-            Toast.makeText(this, "¡Bienvenido, ${foundUser.name}!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "¡Bienvenido de nuevo, ${foundUser.name}!", Toast.LENGTH_SHORT).show()
 
-            // Guardar el usuario activo en SharedPreferences
-            prefsRepository.saveActiveUser(foundUser.email)
+            // ================== INICIO DE LA CORRECCIÓN ==================
+            // Usamos el nombre de método correcto: setActiveUserEmail
+            prefsRepository.setActiveUserEmail(foundUser.email)
+            // =================== FIN DE LA CORRECCIÓN ====================
 
             // Ir a MainActivity y limpiar la pila de navegación
             val intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
-            // No llamamos a finish() aquí porque MainActivity se convierte en la nueva raíz.
+            finish() // Cierra LoginActivity para que el usuario no pueda volver
         } else {
             // Credenciales incorrectas
             Toast.makeText(this, "Email o contraseña incorrectos", Toast.LENGTH_SHORT).show()

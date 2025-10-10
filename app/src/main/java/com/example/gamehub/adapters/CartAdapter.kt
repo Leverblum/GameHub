@@ -9,66 +9,71 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gamehub.R
 import com.example.gamehub.models.CartItem
-import com.example.gamehub.repository.PrefsRepository
-import com.example.gamehub.utils.CartListener
+import com.example.gamehub.viewmodels.CartViewModel
+import java.text.NumberFormat
+import java.util.Locale
 
 class CartAdapter(
-    private var cartItems: MutableList<CartItem>,
-    private val listener: CartListener,
-    private val prefsRepository: PrefsRepository
+    private var items: MutableList<CartItem>,
+    private val cartViewModel: CartViewModel
 ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
+    // ================== INICIO DE LA CORRECCIÓN ==================
+    // ViewHolder ahora busca los IDs de 'item_cart_product.xml'
     class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val productImage: ImageView = itemView.findViewById(R.id.ivCartProductImage)
-        val productName: TextView = itemView.findViewById(R.id.tvCartProductName)
-        val productPrice: TextView = itemView.findViewById(R.id.tvCartProductPrice)
-        val quantity: TextView = itemView.findViewById(R.id.tvQuantity)
-        val btnMinus: ImageButton = itemView.findViewById(R.id.btnMinus)
+        val itemImage: ImageView = itemView.findViewById(R.id.ivCartProductImage)
+        val itemTitle: TextView = itemView.findViewById(R.id.tvCartProductName)
+        val itemPrice: TextView = itemView.findViewById(R.id.tvCartProductPrice)
+        val itemQuantity: TextView = itemView.findViewById(R.id.tvQuantity)
         val btnPlus: ImageButton = itemView.findViewById(R.id.btnPlus)
+        val btnMinus: ImageButton = itemView.findViewById(R.id.btnMinus)
         val btnRemove: ImageButton = itemView.findViewById(R.id.btnRemoveItem)
     }
+    // =================== FIN DE LA CORRECCIÓN ====================
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
+        // ======================= CAMBIO CLAVE =======================
+        // Inflamos TU layout existente: 'item_cart_product.xml'.
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_cart_product, parent, false)
         return CartViewHolder(view)
+        // ==========================================================
     }
 
-    override fun getItemCount(): Int = cartItems.size
-
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
-        val cartItem = cartItems[position]
+        val item = items[position]
 
-        holder.productName.text = cartItem.product.name
-        holder.productPrice.text = "$${cartItem.product.price}"
-        holder.quantity.text = cartItem.quantity.toString()
-        // Aquí cargarías la imagen del producto con Glide/Picasso
+        holder.itemTitle.text = item.product.name
+        holder.itemQuantity.text = item.quantity.toString()
 
-        holder.btnMinus.setOnClickListener {
-            if (cartItem.quantity > 1) {
-                cartItem.quantity--
-                holder.quantity.text = cartItem.quantity.toString()
-                prefsRepository.saveCartItems(cartItems)
-                listener.onQuantityChanged()
-            }
+        val currencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
+        holder.itemPrice.text = currencyFormat.format(item.product.price)
+        // holder.itemImage.load(item.product.imageUrl) // Aquí usarías Glide/Picasso
+
+        // La lógica de los clics ahora apunta a los botones correctos
+        holder.btnPlus.setOnClickListener {
+            val newQuantity = item.quantity + 1
+            cartViewModel.updateItemQuantity(item, newQuantity)
         }
 
-        holder.btnPlus.setOnClickListener {
-            cartItem.quantity++
-            holder.quantity.text = cartItem.quantity.toString()
-            prefsRepository.saveCartItems(cartItems)
-            listener.onQuantityChanged()
+        holder.btnMinus.setOnClickListener {
+            val newQuantity = item.quantity - 1
+            cartViewModel.updateItemQuantity(item, newQuantity)
         }
 
         holder.btnRemove.setOnClickListener {
-            val currentPosition = holder.adapterPosition
-            if (currentPosition != RecyclerView.NO_POSITION) {
-                val itemToRemove = cartItems[currentPosition]
-                cartItems.removeAt(currentPosition)
-                prefsRepository.saveCartItems(cartItems)
-                notifyItemRemoved(currentPosition)
-                listener.onItemRemoved(itemToRemove)
-            }
+            cartViewModel.removeItemFromCart(item)
         }
+    }
+
+    override fun getItemCount() = items.size
+
+    /**
+     * Este método es llamado por el observador en CartFragment para refrescar la lista.
+     */
+    fun updateItems(newItems: List<CartItem>) {
+        items.clear()
+        items.addAll(newItems)
+        notifyDataSetChanged()
     }
 }

@@ -8,4 +8,5 @@
     <string name="store_image">Imagen de la tienda</string>
     <string name="home">Inicio</string>
     <string name="catalog">Catálogo</string>
+    <string name="game_image_description">Descripción de la imagen del juego</string>
 </resources>

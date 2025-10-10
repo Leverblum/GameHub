@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.payment.PaymentMethodsFragment">
+
+    <!-- RecyclerView para mostrar la lista de tarjetas -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPaymentMethods"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_payment_method" /> <!-- 'tools:listitem' es para previsualización -->
+
+    <!-- Mensaje que se muestra cuando no hay métodos de pago -->
+    <TextView
+        android:id="@+id/tvNoPaymentMethodsMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No tienes métodos de pago guardados.\n¡Añade uno nuevo!"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        tools:visibility="visible" />
+
+    <!-- Botón flotante para añadir una nueva tarjeta -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="Añadir nuevo método de pago"
+        app:srcCompat="@drawable/ic_add" /> <!-- Asume que tienes un ícono de 'add' -->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

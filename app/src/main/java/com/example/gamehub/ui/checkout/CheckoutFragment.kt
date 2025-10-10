@@ -1,9 +1,7 @@
 package com.example.gamehub.ui.checkout
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -11,38 +9,50 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.gamehub.R
-// NUEVOS IMPORTS
-import com.example.gamehub.models.Order
-import com.example.gamehub.repository.PrefsRepository
 import com.example.gamehub.ui.home.HomeFragment
-import java.util.Date
-import java.util.UUID
+import com.example.gamehub.viewmodels.CartViewModel
+import com.example.gamehub.viewmodels.CheckoutViewModel
 
-class CheckoutFragment : Fragment() {
+class CheckoutFragment : Fragment(R.layout.fragment_checkout) {
+
+    // Obtenemos las instancias de los ViewModels compartidos
+    private val checkoutViewModel: CheckoutViewModel by activityViewModels()
+    private val cartViewModel: CartViewModel by activityViewModels()
 
     private lateinit var etAddress: EditText
     private lateinit var spinnerPayment: Spinner
     private lateinit var btnConfirmPurchase: Button
-    private lateinit var prefsRepository: PrefsRepository
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_checkout, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        prefsRepository = PrefsRepository(requireContext())
         initializeViews(view)
         setupPaymentSpinner()
         setupConfirmButton()
 
-        return view
+        // Observador para reaccionar cuando la compra se completa
+        checkoutViewModel.orderCompletedEvent.observe(viewLifecycleOwner) { hasCompleted ->
+            if (hasCompleted) {
+                Toast.makeText(requireContext(), "¡Compra realizada con éxito!", Toast.LENGTH_LONG).show()
+
+                // Navegamos al Home y limpiamos la pila de navegación para que no pueda volver al checkout
+                parentFragmentManager.popBackStack(null, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, HomeFragment())
+                    .commit()
+
+                // Reseteamos el evento en el ViewModel
+                checkoutViewModel.onOrderCompletedEventHandled()
+            }
+        }
     }
 
     private fun initializeViews(view: View) {
         etAddress = view.findViewById(R.id.etAddress)
         spinnerPayment = view.findViewById(R.id.spinnerPayment)
+        // El ID de tu botón en el layout anterior era btnConfirmPurchase, lo mantenemos por consistencia
         btnConfirmPurchase = view.findViewById(R.id.btnConfirmPurchase)
     }
 
@@ -74,50 +84,12 @@ class CheckoutFragment : Fragment() {
             .setTitle("Confirmar Compra")
             .setMessage("¿Estás seguro de que deseas realizar la compra?\n\nDirección: $address\nMétodo de pago: $paymentMethod")
             .setPositiveButton("Confirmar") { dialog, _ ->
-                processPurchase()
+                // La única acción aquí es llamar al método del ViewModel.
+                // Le pasamos el cartViewModel para que pueda acceder a los items del carrito.
+                checkoutViewModel.completeCheckout(cartViewModel)
                 dialog.dismiss()
             }
             .setNegativeButton("Cancelar", null)
             .show()
-    }
-
-    private fun processPurchase() {
-        // --- LÓGICA DE PERSISTENCIA DEL PEDIDO ---
-
-        // 1. Obtener los items del carrito que se van a comprar
-        val itemsToPurchase = prefsRepository.getCartItems()
-        if (itemsToPurchase.isEmpty()) {
-            Toast.makeText(context, "Tu carrito está vacío.", Toast.LENGTH_SHORT).show()
-            return // No procesar si no hay nada que comprar
-        }
-
-        // 2. Calcular el total del pedido
-        val total = itemsToPurchase.sumOf { it.product.price * it.quantity }
-
-        // 3. Crear el nuevo objeto Order
-        val newOrder = Order(
-            id = UUID.randomUUID().toString().substring(0, 6).uppercase(), // ID de pedido aleatorio y corto
-            date = Date(), // Fecha y hora actual
-            status = "Procesando", // Estado inicial
-            total = total,
-            items = itemsToPurchase
-        )
-
-        // 4. Obtener la lista actual de pedidos y añadir el nuevo
-        val allOrders = prefsRepository.getOrders()
-        allOrders.add(newOrder)
-        prefsRepository.saveOrders(allOrders)
-
-        // 5. Limpiar el carrito
-        prefsRepository.clearCart()
-
-        // --- FIN DE LA LÓGICA DE PERSISTENCIA ---
-
-        Toast.makeText(context, "¡Compra realizada con éxito! Pedido #${newOrder.id}", Toast.LENGTH_LONG).show()
-
-        // Navegar a la pantalla de inicio
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, HomeFragment())
-            .commit()
     }
 }

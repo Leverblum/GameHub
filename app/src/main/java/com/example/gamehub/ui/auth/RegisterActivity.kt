@@ -2,22 +2,29 @@ package com.example.gamehub.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Patterns // <-- NUEVO IMPORT para la validación de email
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.gamehub.MainActivity
 import com.example.gamehub.R
 import com.example.gamehub.models.User
 import com.example.gamehub.repository.PrefsRepository
 
 class RegisterActivity : AppCompatActivity() {
 
-    // 1. Declarar las vistas y el repositorio
+    // --- Vistas obligatorias ---
     private lateinit var etName: EditText
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
+
+    // --- Vistas nuevas y opcionales ---
+    private lateinit var etPhone: EditText
+    private lateinit var etAddress: EditText
+    private lateinit var etDob: EditText
+
     private lateinit var btnRegister: Button
     private lateinit var tvGoToLogin: TextView
     private lateinit var prefsRepository: PrefsRepository
@@ -26,18 +33,24 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        // 2. Inicializar vistas y repositorio
         initializeViews()
         prefsRepository = PrefsRepository(this)
-
-        // 3. Configurar listeners
         setupListeners()
     }
 
     private fun initializeViews() {
+        // --- Campos Obligatorios ---
         etName = findViewById(R.id.etName)
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
+
+        // ================== INICIO DEL CAMBIO ==================
+        // --- Vinculación de los nuevos campos ---
+        etPhone = findViewById(R.id.etPhone)
+        etAddress = findViewById(R.id.etAddress)
+        etDob = findViewById(R.id.etDob)
+        // =================== FIN DEL CAMBIO ====================
+
         btnRegister = findViewById(R.id.btnRegister)
         tvGoToLogin = findViewById(R.id.tvGoToLogin)
     }
@@ -48,63 +61,73 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         tvGoToLogin.setOnClickListener {
-            // Volver a LoginActivity
+            // Regresa a la actividad anterior (LoginActivity)
             finish()
         }
     }
 
     private fun handleRegistration() {
-        // 4. Obtener los datos de los EditText
+        // --- Lectura de campos obligatorios ---
         val name = etName.text.toString().trim()
         val email = etEmail.text.toString().trim().lowercase()
         val password = etPassword.text.toString().trim()
 
-        // --- INICIO DE LA NUEVA LÓGICA DE VALIDACIÓN ---
+        // --- Lectura de campos opcionales ---
+        val phone = etPhone.text.toString().trim()
+        val address = etAddress.text.toString().trim()
+        val dob = etDob.text.toString().trim()
 
-        // Validar campos vacíos
+        // --- Validaciones (solo para campos obligatorios) ---
         if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Nombre, email y contraseña son obligatorios", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Validar formato de email
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             etEmail.error = "El formato del correo no es válido"
             Toast.makeText(this, "Por favor, introduce un correo electrónico válido.", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Validar longitud de la contraseña
         val minPasswordLength = 6
         if (password.length < minPasswordLength) {
             etPassword.error = "La contraseña debe tener al menos $minPasswordLength caracteres"
-            Toast.makeText(this, "La contraseña es demasiado corta (mínimo $minPasswordLength caracteres).", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "La contraseña es demasiado corta.", Toast.LENGTH_LONG).show()
             return
         }
 
-        // --- FIN DE LA NUEVA LÓGICA DE VALIDACIÓN ---
-
-        // 5. Lógica de registro usando el repositorio
-        val users = prefsRepository.getUsers()
+        val users = prefsRepository.getUsers().toMutableList()
         val userExists = users.any { it.email.equals(email, ignoreCase = true) }
 
         if (userExists) {
             Toast.makeText(this, "El correo electrónico ya está registrado", Toast.LENGTH_SHORT).show()
         } else {
-            // Crear el nuevo usuario y añadirlo a la lista
-            val newUser = User(id = email, name = name, email = email, password = password)
+            // ================== INICIO DEL CAMBIO ==================
+            // Creación del nuevo usuario con TODOS los campos del modelo
+            val newUser = User(
+                id = (users.maxOfOrNull { it.id } ?: 0) + 1, // Forma segura de generar ID
+                name = name,
+                email = email,
+                password = password, // Recuerda encriptar esto en una app real
+                role = "user",
+                // Asignamos los valores de los nuevos campos (serán "" si están vacíos)
+                phone = phone,
+                address = address,
+                dateOfBirth = dob,
+                avatarUrl = null // El avatar se puede añadir/editar después
+            )
+            // =================== FIN DEL CAMBIO ====================
+
             users.add(newUser)
-
-            // Guardar la lista de usuarios actualizada en SharedPreferences
             prefsRepository.saveUsers(users)
+            prefsRepository.setActiveUserEmail(email)
 
-            Toast.makeText(this, "Registro exitoso. Ahora inicia sesión.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "¡Bienvenido, $name!", Toast.LENGTH_LONG).show()
 
-            // Redirigir a LoginActivity
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
-            finish() // Cierra RegisterActivity
+            finish()
         }
     }
 }

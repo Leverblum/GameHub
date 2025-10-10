@@ -1,9 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- ESTILOS DE TEXTO (TextAppearance) -->
+
+    <!--
+    CORRECCIÓN: Se añade un "parent" explícito al estilo base.
+    Esto soluciona el error "style/TextAppearance not found".
+    -->
+    <style name="TextAppearance.GameHub" parent="TextAppearance.Material3.BodyMedium" />
+
+    <!-- Ahora los estilos "hijos" pueden heredar de él sin problemas. -->
     <style name="TextAppearance.GameHub.H1">
         <item name="android:fontFamily">@font/orbitron_bold</item>
-        <item name="android:textSize">24sp</item> <!-- Usa sp para texto -->
+        <item name="android:textSize">24sp</item>
         <item name="android:textColor">?attr/android:textColorPrimary</item>
     </style>
 
@@ -19,13 +28,14 @@
         <item name="android:textColor">?attr/android:textColorSecondary</item>
     </style>
 
+
     <!-- ESTILOS DE WIDGETS (Botones, etc.) -->
 
     <!-- Botón principal (general para toda la app) -->
     <style name="Widget.GameHub.Button.Primary" parent="Widget.Material3.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="backgroundTint">@color/color_primary</item> <!-- En M3 es sin 'android:' -->
+        <item name="backgroundTint">@color/color_primary</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/inter_18pt_bold</item>
         <item name="android:textSize">18sp</item>
@@ -33,7 +43,7 @@
         <item name="android:insetBottom">0dp</item>
         <item name="android:paddingTop">12dp</item>
         <item name="android:paddingBottom">12dp</item>
-        <item name="cornerRadius">12dp</item> <!-- En M3 es sin 'android:' -->
+        <item name="cornerRadius">12dp</item>
     </style>
 
     <!-- Botón secundario -->
@@ -48,7 +58,13 @@
         <item name="cornerRadius">12dp</item>
     </style>
 
-    <!-- Reutilizable: fila de opción del perfil -->
+
+    <!-- Estilos de Perfil -->
+
+    <!-- Se define el estilo "padre" vacío para el perfil. -->
+    <style name="Profile" />
+
+    <!-- Ahora el estilo "hijo" puede heredar de él. -->
     <style name="Profile.OptionRow">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -57,7 +73,7 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingLeft">12dp</item>
         <item name="android:paddingRight">12dp</item>
-        <item name="android:background">?attr/colorSurface</item> <!-- Usa el color del tema -->
+        <item name="android:background">?attr/colorSurface</item>
     </style>
 
 </resources>

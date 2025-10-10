@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/color_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!--
+            Con la etiqueta <include>, estamos insertando aquí
+            el contenido completo de 'item_product.xml'.
+            Cualquier cambio que hagas en 'item_product.xml' se reflejará aquí.
+        -->
+        <include layout="@layout/item_product" />
+
+        <!--
+            Aquí podrías añadir elementos adicionales que SOLO aparecerán
+            en la pantalla de detalle, como por ejemplo:
+        -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Descripción"
+            android:textSize="18sp"
+            android:fontFamily="@font/inter_18pt_bold"
+            android:textColor="@color/text_primary" />
+
+        <TextView
+            android:id="@+id/tvGameDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Aquí iría una descripción detallada del juego, explicando su historia, mecánicas y características principales para atraer al comprador."
+            android:textColor="@color/text_secondary"
+            android:lineSpacingExtra="4dp" />
+
+    </LinearLayout>
+
+</ScrollView>

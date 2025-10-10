@@ -55,6 +55,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnVerMas"
         style="@style/Widget.GameHub.Button.Primary"
         android:layout_width="match_parent"
         android:layout_height="48dp"
