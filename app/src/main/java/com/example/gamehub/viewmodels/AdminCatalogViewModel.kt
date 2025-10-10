@@ -26,4 +26,30 @@ class AdminCatalogViewModel : ViewModel() {
         )
         _products.value = hardcodedProducts
     }
+
+
+    fun addProduct(name: String, description: String, price: BigDecimal, stock: Int, category: String) {
+        val currentList = _products.value?.toMutableList() ?: mutableListOf()
+
+        // Creamos un nuevo ID. En una app real, la base de datos lo generaría automáticamente.
+        val newId = (currentList.maxOfOrNull { it.id } ?: 0) + 1
+
+        // Creamos el nuevo objeto Product
+        val newProduct = Product(
+            id = newId,
+            name = name,
+            description = description,
+            price = price,
+            stock = stock,
+            category = category,
+            imageUrl = null, // Aquí iría la URL de la imagen si ya la tuviéramos
+            isActive = true  // Por defecto, los productos nuevos están activos
+        )
+
+        // Añadimos el nuevo producto a la lista
+        currentList.add(newProduct)
+
+        // Actualizamos el LiveData, lo que notificará al RecyclerView para que se redibuje
+        _products.value = currentList
+    }
 }
