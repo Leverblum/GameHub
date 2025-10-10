@@ -1,4 +1,7 @@
 package com.example.gamehub.models
 
-class CartItem {
-}
+
+data class CartItem(
+    val product: Product,
+    var quantity: Int
+)

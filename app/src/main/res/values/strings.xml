@@ -6,4 +6,6 @@
     <string name="product_image">Imagen del producto</string>
     <string name="add_to_cart">Agregar al carrito</string>
     <string name="store_image">Imagen de la tienda</string>
+    <string name="home">Inicio</string>
+    <string name="catalog">Catálogo</string>
 </resources>

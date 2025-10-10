@@ -1,4 +1,4 @@
-package com.example.gamehub.ui.settings
+package com.example.gamehub.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.gamehub.R
 
-class SettingsFragment : Fragment() {
+class ChangePasswordFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_admin_settings, container, false)
+        return inflater.inflate(R.layout.fragment_change_password, container, false)
     }
 }
     

@@ -1,4 +1,6 @@
 package com.example.gamehub.ui.home
 
-class HomeFragment {
-}
+import androidx.fragment.app.Fragment
+import com.example.gamehub.R
+
+class HomeFragment : Fragment(R.layout.fragment_home)

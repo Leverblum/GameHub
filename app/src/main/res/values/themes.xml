@@ -1,31 +1,25 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Tema principal de la aplicación (para MainActivity, etc.) -->
     <style name="Theme.GameHub" parent="Theme.Material3.Light.NoActionBar">
-        <!-- Colores principales -->
+        <!-- Colores primarios del tema -->
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/color_secondary</item>
+
+        <!-- Colores de fondo -->
         <item name="android:colorBackground">@color/color_background</item>
+        <item name="colorSurface">@color/color_surface</item>
 
-        <!-- Fuente global -->
+        <!-- Colores de texto -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+
+        <!-- Fuente global por defecto -->
         <item name="android:fontFamily">@font/inter</item>
     </style>
 
-    <!-- Estilos de títulos -->
-    <style name="TextAppearance.GameHub.H1" parent="@android:style/TextAppearance.Material.Headline">
-        <item name="android:textSize">28sp</item>
-        <item name="android:fontFamily">@font/orbitron</item>
-        <item name="android:textColor">@color/text_primary</item>
-    </style>
+    <!-- Tema para la SplashActivity. Es igual pero se nombra por claridad. -->
+    <style name="Theme.GameHub.Splash" parent="Theme.GameHub" />
 
-    <style name="TextAppearance.GameHub.H2" parent="@android:style/TextAppearance.Material.Title">
-        <item name="android:textSize">22sp</item>
-        <item name="android:fontFamily">@font/orbitron</item>
-        <item name="android:textColor">@color/text_primary</item>
-    </style>
-
-    <style name="TextAppearance.GameHub.Body" parent="@android:style/TextAppearance.Material.Body1">
-        <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">@font/inter</item>
-        <item name="android:textColor">@color/text_secondary</item>
-    </style>
 </resources>
