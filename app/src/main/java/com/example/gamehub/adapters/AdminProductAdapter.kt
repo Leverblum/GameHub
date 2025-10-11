@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gamehub.R
-import com.example.gamehub.models.Product // ¡Importamos el modelo correcto!
+import com.example.gamehub.models.Product
 import java.text.NumberFormat
 import java.util.Locale
 

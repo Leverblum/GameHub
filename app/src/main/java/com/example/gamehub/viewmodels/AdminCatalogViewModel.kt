@@ -3,7 +3,7 @@ package com.example.gamehub.ui.admin.catalog
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.gamehub.models.Product // Usamos el modelo Product actualizado
+import com.example.gamehub.models.Product
 import java.math.BigDecimal
 
 class AdminCatalogViewModel : ViewModel() {
@@ -16,7 +16,7 @@ class AdminCatalogViewModel : ViewModel() {
     }
 
     private fun loadProducts() {
-        // Creamos una lista de objetos 'Product' con la estructura completa.
+        // En una app real, estos datos vendrían de una API o base de datos.
         val hardcodedProducts = listOf(
             Product(1, "The Last of Us Part II", "Aventura y acción post-apocalíptica.", BigDecimal("59.99"), 30, "PS4", isActive = true),
             Product(2, "Cyberpunk 2077", "RPG de mundo abierto en Night City.", BigDecimal("49.99"), 15, "PC", isActive = true),
@@ -27,14 +27,15 @@ class AdminCatalogViewModel : ViewModel() {
         _products.value = hardcodedProducts
     }
 
-
+    /**
+     * Añade un nuevo producto a la lista.
+     */
     fun addProduct(name: String, description: String, price: BigDecimal, stock: Int, category: String) {
         val currentList = _products.value?.toMutableList() ?: mutableListOf()
 
-        // Creamos un nuevo ID. En una app real, la base de datos lo generaría automáticamente.
+        // Creamos un nuevo ID (en un caso real, la BBDD lo generaría)
         val newId = (currentList.maxOfOrNull { it.id } ?: 0) + 1
 
-        // Creamos el nuevo objeto Product
         val newProduct = Product(
             id = newId,
             name = name,
@@ -42,14 +43,39 @@ class AdminCatalogViewModel : ViewModel() {
             price = price,
             stock = stock,
             category = category,
-            imageUrl = null, // Aquí iría la URL de la imagen si ya la tuviéramos
-            isActive = true  // Por defecto, los productos nuevos están activos
+            imageUrl = null, // Placeholder para la URL de la imagen
+            isActive = true // Por defecto, los productos nuevos están activos
         )
 
-        // Añadimos el nuevo producto a la lista
         currentList.add(newProduct)
-
-        // Actualizamos el LiveData, lo que notificará al RecyclerView para que se redibuje
         _products.value = currentList
+    }
+
+    /**
+     * Busca un producto por su ID en la lista actual.
+     * @return El [Product] si se encuentra, o null si no.
+     */
+    fun getProductById(id: Int): Product? {
+        return _products.value?.find { it.id == id }
+    }
+
+    /**
+     * Actualiza un producto existente en la lista.
+     */
+    fun updateProduct(id: Int, name: String, description: String, price: BigDecimal, stock: Int, category: String) {
+        val currentList = _products.value?.toMutableList() ?: return
+
+        val productIndex = currentList.indexOfFirst { it.id == id }
+        if (productIndex != -1) {
+            val updatedProduct = currentList[productIndex].copy(
+                name = name,
+                description = description,
+                price = price,
+                stock = stock,
+                category = category
+            )
+            currentList[productIndex] = updatedProduct
+            _products.value = currentList
+        }
     }
 }

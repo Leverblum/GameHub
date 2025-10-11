@@ -11,24 +11,22 @@ import androidx.fragment.app.activityViewModels
 import com.example.gamehub.R
 import com.example.gamehub.models.Product
 import com.example.gamehub.viewmodels.CartViewModel
+import java.math.BigDecimal // 1. Importamos BigDecimal
 
 class GameDetailFragment : Fragment(R.layout.fragment_product_detail) {
 
-    // CAMBIO: Obtenemos la instancia del ViewModel compartida
     private val cartViewModel: CartViewModel by activityViewModels()
-
     private var currentProduct: Product? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Recuperamos el ID del producto y lo buscamos en nuestra lista de ejemplo
         val productId = arguments?.getInt(ARG_PRODUCT_ID)
         if (productId != null) {
+            // Usamos la misma función corregida para buscar el producto
             currentProduct = createSampleProducts().find { it.id == productId }
         }
 
-        // Vinculamos las vistas
         val titleTextView: TextView = view.findViewById(R.id.tvDetailTitle)
         val priceTextView: TextView = view.findViewById(R.id.tvDetailPrice)
         val descriptionTextView: TextView = view.findViewById(R.id.tvDetailDescription)
@@ -37,12 +35,13 @@ class GameDetailFragment : Fragment(R.layout.fragment_product_detail) {
 
         currentProduct?.let { product ->
             titleTextView.text = product.name
-            priceTextView.text = "$${product.price}"
-            descriptionTextView.text = "Esta es una descripción detallada para ${product.name} que viene de una fuente de datos."
-            // imageView.load(product.imageUrl) // Aquí usarías Glide o Picasso
+            // Usamos .toDouble() para compatibilidad si la lógica de formato de texto lo requiere,
+            // pero es mejor formatear desde BigDecimal si es posible.
+            priceTextView.text = "$${product.price.toPlainString()}"
+            descriptionTextView.text = product.description // Usamos la descripción real del producto
+            // imageView.load(product.imageUrl)
 
             addToCartButton.setOnClickListener {
-                // CAMBIO: Llama al método centralizado del ViewModel
                 cartViewModel.addProductToCart(product)
                 Toast.makeText(context, "${product.name} añadido al carrito", Toast.LENGTH_SHORT).show()
             }
@@ -64,19 +63,18 @@ class GameDetailFragment : Fragment(R.layout.fragment_product_detail) {
     }
 
     private fun createSampleProducts(): List<Product> {
-        // Esta lista debe ser idéntica a la del HomeFragment para encontrar el producto por ID
         return listOf(
-            Product(1, "The Legend of Zelda", 59.99, "url_zelda"),
-            Product(2, "Red Dead Redemption 2", 39.99, "url_rdr2"),
-            Product(3, "Elden Ring", 59.99, "url_elden"),
-            Product(4, "Cyberpunk 2077", 49.99, "url_cyberpunk"),
-            Product(5, "God of War: Ragnarök", 69.99, "url_gow"),
-            Product(6, "Stardew Valley", 14.99, "url_stardew"),
-            Product(7, "Hollow Knight", 14.99, "url_hollow"),
-            Product(8, "Diablo IV", 69.99, "url_imagen_8"),
-            Product(9, "Starfield", 69.99, "url_imagen_9"),
-            Product(10, "Baldur's Gate 3", 59.99, "url_imagen_10"),
-            Product(11, "Hogwarts Legacy", 69.99, "url_imagen_11")
+            Product(1, "The Legend of Zelda", "Aventura épica en Hyrule", BigDecimal("59.99"), 10, "Nintendo Switch", "url_zelda", true),
+            Product(2, "Red Dead Redemption 2", "La historia de Arthur Morgan", BigDecimal("39.99"), 20, "PlayStation 4", "url_rdr2", true),
+            Product(3, "Elden Ring", "Levántate, Sinluz", BigDecimal("59.99"), 15, "PC", "url_elden", true),
+            Product(4, "Cyberpunk 2077", "Explora Night City", BigDecimal("49.99"), 25, "PC", "url_cyberpunk", true),
+            Product(5, "God of War: Ragnarök", "El fin se acerca", BigDecimal("69.99"), 5, "PlayStation 5", "url_gow", true),
+            Product(6, "Stardew Valley", "Crea la granja de tus sueños", BigDecimal("14.99"), 100, "PC", "url_stardew", true),
+            Product(7, "Hollow Knight", "Aventura en un reino de insectos", BigDecimal("14.99"), 50, "PC", "url_hollow", true),
+            Product(8, "Diablo IV", "El regreso de Lilith", BigDecimal("69.99"), 30, "PC", "url_imagen_8", true),
+            Product(9, "Starfield", "Aventura espacial de Bethesda", BigDecimal("69.99"), 12, "Xbox", "url_imagen_9", true),
+            Product(10, "Baldur's Gate 3", "RPG basado en D&D", BigDecimal("59.99"), 18, "PC", "url_imagen_10", true),
+            Product(11, "Hogwarts Legacy", "Vive el mundo mágico", BigDecimal("69.99"), 22, "PlayStation 5", "url_imagen_11", true)
         )
     }
 }

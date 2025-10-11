@@ -14,10 +14,10 @@ import com.example.gamehub.R
 import com.example.gamehub.models.CartItem
 import com.example.gamehub.models.Product
 import com.example.gamehub.repository.PrefsRepository
+import java.math.BigDecimal // 1. Importamos BigDecimal
 
 class ProductDetailFragment : Fragment() {
 
-    // Vistas del layout
     private lateinit var ivDetailImage: ImageView
     private lateinit var tvDetailTitle: TextView
     private lateinit var tvDetailPlatform: TextView
@@ -29,7 +29,6 @@ class ProductDetailFragment : Fragment() {
     private lateinit var tvQuantity: TextView
     private lateinit var btnAddToCartDetail: Button
 
-    // Propiedades de la clase
     private var productId: Int = -1
     private var product: Product? = null
     private lateinit var prefsRepository: PrefsRepository
@@ -46,12 +45,10 @@ class ProductDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_product_detail, container, false)
-
         prefsRepository = PrefsRepository(requireContext())
         initializeViews(view)
         loadProductData()
         setupClickListeners()
-
         return view
     }
 
@@ -76,20 +73,22 @@ class ProductDetailFragment : Fragment() {
         }
 
         val sampleProducts = mapOf(
-            1 to Product(1, "The Legend of Zelda: Breath of the Wild", 59.99, "url_1", "Nintendo Switch • Aventura", "★ 4.8", "Una aventura épica en el vasto reino de Hyrule."),
-            2 to Product(2, "Red Dead Redemption 2", 49.99, "url_2", "PlayStation 4 • Acción", "★ 4.9", "La historia de Arthur Morgan y la banda de Van der Linde."),
-            3 to Product(3, "Cyberpunk 2077", 39.99, "url_3", "PC • RPG", "★ 4.2", "Explora Night City, una megalópolis obsesionada con el poder."),
-            4 to Product(4, "Elden Ring", 59.99, "url_4", "PC • RPG de Acción", "★ 4.7", "Levántate, Sinluz, y que la gracia te guíe para abrazar el poder del Círculo de Elden.")
+            1 to Product(1, "The Legend of Zelda", "Aventura épica en Hyrule", BigDecimal("59.99"), 10, "Nintendo Switch", "url_zelda", true),
+            2 to Product(2, "Red Dead Redemption 2", "La historia de Arthur Morgan", BigDecimal("39.99"), 20, "PlayStation 4", "url_rdr2", true),
+            3 to Product(3, "Cyberpunk 2077", "Explora Night City", BigDecimal("39.99"), 25, "PC", "url_cyberpunk", true),
+            4 to Product(4, "Elden Ring", "Levántate, Sinluz", BigDecimal("59.99"), 15, "PC", "url_elden", true)
         )
-        // Guardamos el producto encontrado en la variable de la clase
+
         this.product = sampleProducts[productId]
 
         if (product != null) {
             tvDetailTitle.text = product!!.name
-            tvDetailPrice.text = "$${product!!.price}"
-            tvDetailPlatform.text = product!!.platform
-            tvDetailRating.text = product!!.rating
+            tvDetailPrice.text = "$${product!!.price.toPlainString()}"
+            tvDetailPlatform.text = product!!.category // Usamos 'category'
             tvDetailDescription.text = product!!.description
+            // El campo 'rating' no existe en el modelo Product, lo comentamos o eliminamos
+            // tvDetailRating.text = "★ 4.8"
+            tvDetailRating.visibility = View.GONE // Ocultamos la vista si no hay dato
         }
     }
 
@@ -112,16 +111,13 @@ class ProductDetailFragment : Fragment() {
             product?.let { prod ->
                 val cartItems = prefsRepository.getCartItems()
                 val selectedQuantity = tvQuantity.text.toString().toIntOrNull() ?: 1
-
                 val existingItem = cartItems.find { it.product.id == prod.id }
-
                 if (existingItem != null) {
                     existingItem.quantity += selectedQuantity
                 } else {
                     val newCartItem = CartItem(product = prod, quantity = selectedQuantity)
                     cartItems.add(newCartItem)
                 }
-
                 prefsRepository.saveCartItems(cartItems)
                 Toast.makeText(context, "'${prod.name}' añadido al carrito", Toast.LENGTH_SHORT).show()
             }
