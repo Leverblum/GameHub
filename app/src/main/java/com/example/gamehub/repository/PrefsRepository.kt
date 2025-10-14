@@ -146,7 +146,7 @@ class PrefsRepository(context: Context) {
     fun logout() {
         prefs.edit()
             .remove(KEY_ACTIVE_USER_EMAIL)
-            .apply(()
+            .apply()
     }
 
 }
