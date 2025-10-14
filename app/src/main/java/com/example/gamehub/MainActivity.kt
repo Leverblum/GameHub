@@ -157,7 +157,7 @@ class MainActivity : AppCompatActivity(), NavigationListener {
     override fun onDestroy() {
         super.onDestroy()
         val prefsRepository = PrefsRepository(this)
-        prefsRepository.logout() // ✅ Limpia la sesión al cerrar la app
+        prefsRepository.logout()
     }
 
     override fun onStop() {
