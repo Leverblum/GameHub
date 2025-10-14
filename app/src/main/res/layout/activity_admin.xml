@@ -95,7 +95,6 @@
                 app:tint="@color/text_secondary" />
         </LinearLayout>
 
-        <!-- Contenedor donde se cargarán los fragmentos -->
         <FrameLayout
             android:id="@+id/adminFragmentContainer"
             android:layout_width="match_parent"
