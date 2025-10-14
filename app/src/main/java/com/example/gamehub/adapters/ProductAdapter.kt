@@ -39,7 +39,7 @@ class ProductAdapter(
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = products[position]
         holder.productTitle.text = product.name
-        holder.productPrice.text = "$${product.price}"
+        holder.productPrice.text = String.format("$%.2f", product.price)
         holder.productImage.setImageResource(R.drawable.ic_gamepad) // Placeholder
 
         holder.root.setOnClickListener {

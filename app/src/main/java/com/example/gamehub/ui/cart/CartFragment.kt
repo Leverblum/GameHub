@@ -15,8 +15,10 @@ import com.example.gamehub.adapters.CartAdapter
 import com.example.gamehub.models.CartItem
 import com.example.gamehub.ui.checkout.CheckoutFragment
 import com.example.gamehub.viewmodels.CartViewModel
+import java.math.BigDecimal
 import java.text.NumberFormat
 import java.util.Locale
+import kotlin.collections.sumOf
 
 class CartFragment : Fragment() {
 
@@ -74,8 +76,11 @@ class CartFragment : Fragment() {
     }
 
     private fun updateTotalsUI(items: List<CartItem>) {
-        val subtotal = items.sumOf { it.product.price * it.quantity }
-        val taxes = subtotal * 0.19 // 19% de impuestos
+        val subtotal = items.sumOf {
+            it.product.price.multiply(it.quantity.toBigDecimal())
+        }
+        val taxes = subtotal.multiply(BigDecimal("0.19"))
+
         val total = subtotal + taxes
 
         val currencyFormat = NumberFormat.getCurrencyInstance(Locale.US)

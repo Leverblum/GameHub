@@ -13,6 +13,7 @@ import com.example.gamehub.adapters.ProductAdapter
 import com.example.gamehub.models.Product
 import com.example.gamehub.ui.detail.GameDetailFragment
 import com.example.gamehub.viewmodels.CartViewModel // CAMBIO: Import del ViewModel
+import java.math.BigDecimal
 
 class CatalogFragment : Fragment() {
 
@@ -56,14 +57,14 @@ class CatalogFragment : Fragment() {
 
     private fun createSampleCatalogProducts(): List<Product> {
         return listOf(
-            Product(1, "The Legend of Zelda: Breath of the Wild", 59.99, "url_imagen_1"),
-            Product(2, "Red Dead Redemption 2", 49.99, "url_imagen_2"),
-            Product(3, "Cyberpunk 2077", 39.99, "url_imagen_3"),
-            Product(4, "Elden Ring", 59.99, "url_imagen_4"),
-            Product(8, "Diablo IV", 69.99, "url_imagen_8"),
-            Product(9, "Starfield", 69.99, "url_imagen_9"),
-            Product(10, "Baldur's Gate 3", 59.99, "url_imagen_10"),
-            Product(11, "Hogwarts Legacy", 69.99, "url_imagen_11")
+            Product(1, "The Legend of Zelda: Breath of the Wild", "", BigDecimal(59.99), 10,"","url_imagen_1"),
+            Product(2, "Red Dead Redemption 2","", BigDecimal(49.99),10,"", "url_imagen_2"),
+            Product(3, "Cyberpunk 2077","", BigDecimal(39.99),10,"", "url_imagen_3"),
+            Product(4, "Elden Ring","", BigDecimal(59.99),10, "","url_imagen_4"),
+            Product(8, "Diablo IV","", BigDecimal(69.99),10, "","url_imagen_8"),
+            Product(9, "Starfield","", BigDecimal(69.99),10, "","url_imagen_9"),
+            Product(10, "Baldur's Gate 3","", BigDecimal(59.99),10, "","url_imagen_10"),
+            Product(11, "Hogwarts Legacy","", BigDecimal(69.99) , 10,"","url_imagen_11")
         )
     }
 }

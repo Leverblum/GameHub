@@ -40,7 +40,7 @@ class AdminProductAdapter(
         }
 
         private fun formatPrice(price: Double): String {
-            return NumberFormat.getCurrencyInstance(Locale.getDefault()).format(price)
+            return String.format(Locale.getDefault(), "$%.2f", price)
         }
     }
 

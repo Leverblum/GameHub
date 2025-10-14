@@ -70,7 +70,7 @@ class AdminProductFormFragment : Fragment(R.layout.fragment_admin_product_form) 
             btnSave.text = "Actualizar Producto"
             etName.setText(it.name)
             etCategory.setText(it.category)
-            etPrice.setText(it.price.toPlainString())
+            etPrice.setText(it.price.toString())
             etStock.setText(it.stock.toString())
             etDescription.setText(it.description)
         }

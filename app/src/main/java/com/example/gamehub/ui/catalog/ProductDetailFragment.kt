@@ -73,17 +73,17 @@ class ProductDetailFragment : Fragment() {
         }
 
         val sampleProducts = mapOf(
-            1 to Product(1, "The Legend of Zelda", "Aventura épica en Hyrule", BigDecimal("59.99"), 10, "Nintendo Switch", "url_zelda", true),
-            2 to Product(2, "Red Dead Redemption 2", "La historia de Arthur Morgan", BigDecimal("39.99"), 20, "PlayStation 4", "url_rdr2", true),
-            3 to Product(3, "Cyberpunk 2077", "Explora Night City", BigDecimal("39.99"), 25, "PC", "url_cyberpunk", true),
-            4 to Product(4, "Elden Ring", "Levántate, Sinluz", BigDecimal("59.99"), 15, "PC", "url_elden", true)
+            1 to Product(1, "The Legend of Zelda", "Aventura épica en Hyrule", BigDecimal(59.99), 10, "Nintendo Switch", "url_zelda", true),
+            2 to Product(2, "Red Dead Redemption 2", "La historia de Arthur Morgan", BigDecimal(39.99), 20, "PlayStation 4", "url_rdr2", true),
+            3 to Product(3, "Cyberpunk 2077", "Explora Night City", BigDecimal(39.99), 25, "PC", "url_cyberpunk", true),
+            4 to Product(4, "Elden Ring", "Levántate, Sinluz", BigDecimal(59.99), 15, "PC", "url_elden", true)
         )
 
         this.product = sampleProducts[productId]
 
         if (product != null) {
             tvDetailTitle.text = product!!.name
-            tvDetailPrice.text = "$${product!!.price.toPlainString()}"
+            tvDetailPrice.text = "$${product!!.price.toString()}"
             tvDetailPlatform.text = product!!.category // Usamos 'category'
             tvDetailDescription.text = product!!.description
             // El campo 'rating' no existe en el modelo Product, lo comentamos o eliminamos

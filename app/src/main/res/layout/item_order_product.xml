@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="12dp"
     android:background="@color/color_surface"
+    android:gravity="center_vertical"
     android:layout_marginBottom="8dp">
 
+    <!-- Imagen del producto -->
     <ImageView
         android:id="@+id/ivProductImage"
         android:layout_width="64dp"
@@ -14,6 +17,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/ic_gamepad" />
 
+    <!-- Información del producto -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -38,14 +42,50 @@
             android:textColor="@color/text_secondary"
             android:layout_marginTop="4dp" />
 
+        <!-- 🔹 Categoría del producto -->
+        <TextView
+            android:id="@+id/tvProductCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categoría"
+            android:fontFamily="@font/inter_18pt_regular"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="4dp" />
     </LinearLayout>
 
+    <!-- Precio -->
     <TextView
         android:id="@+id/tvProductPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="$59.99"
         android:fontFamily="@font/inter_18pt_bold"
-        android:textColor="@color/text_primary" />
+        android:textColor="@color/text_primary"
+        android:layout_marginEnd="8dp" />
+
+    <!-- 🔹 Botones de acción -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_edit"
+            android:backgroundTint="@color/purple_500"
+            android:contentDescription="Editar producto" />
+
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_delete"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:contentDescription="Eliminar producto" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.animation.AlphaAnimation
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gamehub.MainActivity // <-- NUEVO IMPORT
 import com.example.gamehub.R
@@ -20,6 +21,8 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        createDefaultAdminUserIfNeeded()
 
         // Inicializamos el repositorio de preferencias
         val prefsRepository = PrefsRepository(this)
@@ -53,5 +56,21 @@ class SplashActivity : AppCompatActivity() {
             finish()
 
         }, SPLASH_DELAY)
+    }
+
+    private fun createDefaultAdminUserIfNeeded() {
+        val sharedPref = getSharedPreferences("UserDatabase", MODE_PRIVATE)
+        val adminExists = sharedPref.getBoolean("admin_created", false)
+
+        if (!adminExists) {
+            val editor = sharedPref.edit()
+            editor.putString("admin_email", "admin@gamehub.com")
+            editor.putString("admin_password", "admin123")
+            editor.putString("admin_role", "admin")
+            editor.putBoolean("admin_created", true)
+            editor.apply()
+
+            Toast.makeText(this, "Usuario administrador creado por defecto", Toast.LENGTH_SHORT).show()
+        }
     }
 }

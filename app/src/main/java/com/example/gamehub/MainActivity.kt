@@ -5,6 +5,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.gamehub.models.Product
+import com.example.gamehub.repository.PrefsRepository
 import com.example.gamehub.ui.cart.CartFragment
 import com.example.gamehub.ui.catalog.CatalogFragment
 import com.example.gamehub.ui.catalog.ProductDetailFragment // <-- NUEVO IMPORT
@@ -152,4 +153,17 @@ class MainActivity : AppCompatActivity(), NavigationListener {
             .addToBackStack(null)
             .commit()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val prefsRepository = PrefsRepository(this)
+        prefsRepository.logout() // ✅ Limpia la sesión al cerrar la app
+    }
+
+    override fun onStop() {
+        super.onStop()
+        val prefsRepository = PrefsRepository(this)
+        prefsRepository.logout()
+    }
+
 }

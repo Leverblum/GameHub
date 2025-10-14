@@ -37,7 +37,7 @@ class GameDetailFragment : Fragment(R.layout.fragment_product_detail) {
             titleTextView.text = product.name
             // Usamos .toDouble() para compatibilidad si la lógica de formato de texto lo requiere,
             // pero es mejor formatear desde BigDecimal si es posible.
-            priceTextView.text = "$${product.price.toPlainString()}"
+            priceTextView.text = "$${product.price.toString()}"
             descriptionTextView.text = product.description // Usamos la descripción real del producto
             // imageView.load(product.imageUrl)
 

@@ -9,6 +9,7 @@ import com.example.gamehub.models.Product
 import com.example.gamehub.models.User
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.math.BigDecimal
 
 class PrefsRepository(context: Context) {
 
@@ -37,6 +38,13 @@ class PrefsRepository(context: Context) {
         val json = gson.toJson(users)
         prefs.edit().putString(KEY_USERS, json).apply()
     }
+
+    fun saveUser(user: User) {
+        val currentUsers = getUsers().toMutableList() // obtiene los usuarios actuales
+        currentUsers.add(user) // añade el nuevo usuario
+        saveUsers(currentUsers) // guarda la lista completa
+    }
+
 
     fun getUsers(): MutableList<User> {
         val json = prefs.getString(KEY_USERS, null)
@@ -67,10 +75,18 @@ class PrefsRepository(context: Context) {
     // ================== INICIO DE LA CORRECCIÓN ==================
     // Se elimina el .toString() para que el tipo de 'id' (Int) coincida.
     fun addGameToCart(game: Game) {
-        val product = Product(game.id, game.title, game.price, game.imageUrl)
+        val product = Product(
+            id = game.id,
+            name = game.title,
+            description = "Juego disponible en GameHub", // valor por defecto ya que Game no tiene description
+            price = (game.price),
+            stock = 10, // valor fijo o configurable
+            category = "Videojuego", // categoría genérica
+            imageUrl = game.imageUrl,
+            isActive = true
+        )
         addProductToCart(product)
     }
-    // =================== FIN DE LA CORRECCIÓN ====================
 
     fun saveCartItems(cartItems: List<CartItem>) {
         val json = gson.toJson(cartItems)
@@ -126,4 +142,11 @@ class PrefsRepository(context: Context) {
             mutableListOf()
         }
     }
+
+    fun logout() {
+        prefs.edit()
+            .remove(KEY_ACTIVE_USER_EMAIL)
+            .apply()
+    }
+
 }

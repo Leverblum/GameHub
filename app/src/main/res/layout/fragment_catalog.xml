@@ -53,16 +53,7 @@
                 android:layout_marginStart="8dp"
                 android:text="PlayStation" />
 
-            <!-- Añade más chips según necesites... -->
-            <!-- Por ejemplo:
-            <Button
-                android:id="@+id/btnFilterXbox"
-                style="@style/Widget.GameHub.Button.Secondary"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:layout_marginStart="8dp"
-                android:text="Xbox" />
-            -->
+
 
         </LinearLayout>
     </HorizontalScrollView>

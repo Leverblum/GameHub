@@ -10,8 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gamehub.MainActivity
 import com.example.gamehub.R
+import com.example.gamehub.models.User
 import com.example.gamehub.repository.PrefsRepository
-// Importamos AdminActivity, que será el contenedor del admin
 import com.example.gamehub.ui.admin.AdminActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -28,6 +28,10 @@ class LoginActivity : AppCompatActivity() {
 
         initializeViews()
         prefsRepository = PrefsRepository(this)
+
+        // 🔥 Crear usuario admin si no existe
+        createDefaultAdminIfNeeded()
+
         setupListeners()
     }
 
@@ -46,6 +50,23 @@ class LoginActivity : AppCompatActivity() {
         tvGoToRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun createDefaultAdminIfNeeded() {
+        val users = prefsRepository.getUsers()
+        val adminExists = users.any { it.role.equals("admin", ignoreCase = true) }
+
+        if (!adminExists) {
+            val adminUser = User(
+                id = 1,
+                name = "Administrador",
+                email = "admin@gamehub.com",
+                password = "admin123",
+                role = "admin"
+            )
+            prefsRepository.saveUser(adminUser)
+            Toast.makeText(this, "Usuario administrador creado automáticamente", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -68,33 +89,22 @@ class LoginActivity : AppCompatActivity() {
         val foundUser = users.find { it.email.equals(email, ignoreCase = true) && it.password == password }
 
         if (foundUser != null) {
-            // Usuario y contraseña correctos. Primero guardamos su sesión.
             prefsRepository.setActiveUserEmail(foundUser.email)
 
-            // ================== INICIO DEL CAMBIO ==================
-            // VERIFICACIÓN DE ROL PARA REDIRECCIÓN
             if (foundUser.role.equals("admin", ignoreCase = true)) {
-                // Si el usuario es 'admin', lo enviamos a AdminActivity
                 Toast.makeText(this, "Bienvenido, Admin ${foundUser.name}!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, AdminActivity::class.java).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                }
+                val intent = Intent(this, AdminActivity::class.java)
                 startActivity(intent)
-
+                finish()
             } else {
-                // Si es un usuario normal, lo enviamos a MainActivity
                 Toast.makeText(this, "¡Bienvenido de nuevo, ${foundUser.name}!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java).apply {
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 }
                 startActivity(intent)
             }
-            // Cierra LoginActivity para que el usuario no pueda volver atrás
             finish()
-            // =================== FIN DEL CAMBIO ====================
-
         } else {
-            // Credenciales incorrectas
             Toast.makeText(this, "Email o contraseña incorrectos", Toast.LENGTH_SHORT).show()
         }
     }
