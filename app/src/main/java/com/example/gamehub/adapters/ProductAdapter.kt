@@ -13,7 +13,6 @@ import com.example.gamehub.models.Product
 import com.example.gamehub.viewmodels.CartViewModel // CAMBIO: Importamos el ViewModel
 import com.google.android.material.card.MaterialCardView
 
-// CAMBIO: El constructor ahora pide un CartViewModel
 class ProductAdapter(
     private var products: List<Product>,
     private val cartViewModel: CartViewModel
@@ -30,7 +29,6 @@ class ProductAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        // Usa el layout que prefieres: item_game_card
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_game_card, parent, false)
         return ProductViewHolder(view)
@@ -47,7 +45,6 @@ class ProductAdapter(
         }
 
         holder.addButton.setOnClickListener {
-            // CAMBIO: Llama al método centralizado del ViewModel
             cartViewModel.addProductToCart(product)
             Toast.makeText(holder.itemView.context, "${product.name} añadido al carrito", Toast.LENGTH_SHORT).show()
         }

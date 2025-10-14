@@ -12,12 +12,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- 📊 Título -->
+        <!-- Título -->
         <TextView
             android:id="@+id/tvReportsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Reportes y Estadísticas"
+            android:text="@string/reportes_estadisticas"
             android:textSize="22sp"
             android:fontFamily="@font/orbitron_bold"
             android:textColor="@color/text_primary"
@@ -55,7 +55,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ventas Totales"
+                        android:text="@string/ventas_totales"
                         android:textSize="16sp"
                         android:textColor="@color/text_primary"
                         android:fontFamily="@font/inter_18pt_medium" />
@@ -64,7 +64,7 @@
                         android:id="@+id/tvTotalSales"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$124,560"
+                        android:text="@string/ventas"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/color_primary" />
@@ -97,7 +97,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Usuarios Activos"
+                        android:text="@string/usuarios_activos"
                         android:textSize="16sp"
                         android:textColor="@color/text_primary"
                         android:fontFamily="@font/inter_18pt_medium" />
@@ -106,7 +106,7 @@
                         android:id="@+id/tvActiveUsers"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1,250"
+                        android:text="@string/users_activos"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/color_primary" />
@@ -138,7 +138,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Productos Vendidos"
+                        android:text="@string/productos_vendidos"
                         android:textSize="16sp"
                         android:textColor="@color/text_primary"
                         android:fontFamily="@font/inter_18pt_medium" />
@@ -147,7 +147,7 @@
                         android:id="@+id/tvProductsSold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3,480"
+                        android:text="@string/products_sale"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/color_primary" />

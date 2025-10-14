@@ -44,12 +44,9 @@ class RegisterActivity : AppCompatActivity() {
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
 
-        // ================== INICIO DEL CAMBIO ==================
-        // --- Vinculación de los nuevos campos ---
         etPhone = findViewById(R.id.etPhone)
         etAddress = findViewById(R.id.etAddress)
         etDob = findViewById(R.id.etDob)
-        // =================== FIN DEL CAMBIO ====================
 
         btnRegister = findViewById(R.id.btnRegister)
         tvGoToLogin = findViewById(R.id.tvGoToLogin)
@@ -102,8 +99,7 @@ class RegisterActivity : AppCompatActivity() {
         if (userExists) {
             Toast.makeText(this, "El correo electrónico ya está registrado", Toast.LENGTH_SHORT).show()
         } else {
-            // ================== INICIO DEL CAMBIO ==================
-            // Creación del nuevo usuario con TODOS los campos del modelo
+
             val newUser = User(
                 id = (users.maxOfOrNull { it.id } ?: 0) + 1, // Forma segura de generar ID
                 name = name,
@@ -116,7 +112,6 @@ class RegisterActivity : AppCompatActivity() {
                 dateOfBirth = dob,
                 avatarUrl = null // El avatar se puede añadir/editar después
             )
-            // =================== FIN DEL CAMBIO ====================
 
             users.add(newUser)
             prefsRepository.saveUsers(users)

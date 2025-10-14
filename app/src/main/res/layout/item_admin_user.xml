@@ -17,7 +17,7 @@
             android:id="@+id/tvUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre del usuario"
+            android:text="@string/nombre_usuario"
             android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:fontFamily="@font/inter_18pt_medium" />
@@ -26,7 +26,7 @@
             android:id="@+id/tvUserEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="email@ejemplo.com"
+            android:text="@string/email_ejemplo"
             android:textColor="@color/text_secondary"
             android:textSize="14sp"
             android:layout_marginTop="2dp" />
@@ -35,7 +35,7 @@
             android:id="@+id/tvUserRole"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rol: cliente"
+            android:text="@string/rol_cliente"
             android:textColor="@color/text_secondary"
             android:textSize="14sp"
             android:layout_marginTop="2dp" />
@@ -47,7 +47,7 @@
         android:layout_height="36dp"
         android:src="@drawable/ic_edit"
         android:background="@android:color/transparent"
-        android:contentDescription="Editar usuario" />
+        android:contentDescription="@string/editar_usuario" />
 
     <ImageButton
         android:id="@+id/btnDeleteUser"
@@ -55,5 +55,5 @@
         android:layout_height="36dp"
         android:src="@drawable/ic_delete"
         android:background="@android:color/transparent"
-        android:contentDescription="Eliminar usuario" />
+        android:contentDescription="@string/eliminar_usuario" />
 </LinearLayout>

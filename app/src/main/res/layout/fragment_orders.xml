@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Historial de pedidos"
+        android:text="@string/historial_de_pedidos"
         android:textSize="20sp"
         android:fontFamily="@font/orbitron_bold"
         android:textColor="@color/text_primary"

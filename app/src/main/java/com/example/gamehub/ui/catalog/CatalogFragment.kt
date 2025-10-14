@@ -17,12 +17,11 @@ import java.math.BigDecimal
 
 class CatalogFragment : Fragment() {
 
-    // CAMBIO: Obtenemos la instancia del ViewModel compartida a nivel de actividad
     private val cartViewModel: CartViewModel by activityViewModels()
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var productAdapter: ProductAdapter
-    // private lateinit var prefsRepository: PrefsRepository // CAMBIO: Ya no se necesita aquí
+    // private lateinit var prefsRepository: PrefsRepository // Ya no se necesita aquí
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,13 +29,12 @@ class CatalogFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_catalog, container, false)
 
-        // prefsRepository = PrefsRepository(requireContext()) // CAMBIO: Ya no se necesita aquí
+        // prefsRepository = PrefsRepository(requireContext()) // Ya no se necesita aquí
 
         val sampleProducts = createSampleCatalogProducts()
 
         recyclerView = view.findViewById(R.id.rvProducts)
 
-        // SOLUCIÓN: Pasamos el 'cartViewModel' al constructor del adaptador, que es lo que ahora espera.
         productAdapter = ProductAdapter(sampleProducts, cartViewModel)
 
         // El propio adapter ya maneja el clic del botón '+', así que esta parte sigue igual.

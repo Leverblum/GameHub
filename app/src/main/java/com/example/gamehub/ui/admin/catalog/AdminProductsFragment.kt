@@ -38,7 +38,7 @@ class AdminProductsFragment : Fragment() {
 
         loadProducts()
 
-        // 🔍 Filtrar productos en tiempo real
+        // Filtrar productos en tiempo real
         etSearchProduct.addTextChangedListener {
             val query = it.toString()
             val filtered = productsRepository.getProducts().filter { product ->
@@ -47,7 +47,7 @@ class AdminProductsFragment : Fragment() {
             adapter.updateList(filtered)
         }
 
-        // ➕ Abrir formulario de nuevo producto
+        // Abrir formulario de nuevo producto
         btnAddProduct.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.adminFragmentContainer, AdminProductFormFragment())
@@ -68,7 +68,7 @@ class AdminProductsFragment : Fragment() {
         adapter = AdminProductAdapter(
             products = products,
             onEdit = { product ->
-                // 📝 Editar producto
+                // Editar producto
                 val fragment = AdminProductFormFragment.newInstance(product.id)
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.adminFragmentContainer, fragment)
@@ -76,7 +76,7 @@ class AdminProductsFragment : Fragment() {
                     .commit()
             },
             onDelete = { product ->
-                // 🗑️ Eliminar producto
+                // 🗑Eliminar producto
                 productsRepository.deleteProduct(product.id)
                 loadProducts()
             }

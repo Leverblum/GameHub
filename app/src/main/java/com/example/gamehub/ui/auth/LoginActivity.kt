@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         initializeViews()
         prefsRepository = PrefsRepository(this)
 
-        // 🔥 Crear usuario admin si no existe
+        // Crear usuario admin si no existe
         createDefaultAdminIfNeeded()
 
         setupListeners()

@@ -35,20 +35,16 @@ class PaymentMethodsFragment : Fragment(R.layout.fragment_payment_methods) {
     }
 
     private fun setupRecyclerView() {
-        // ================== INICIO DEL CAMBIO ==================
-        // Ahora inicializamos el adapter pasándole las dos acciones que necesita.
         paymentAdapter = PaymentMethodAdapter(
             onItemClicked = { paymentMethod ->
                 // Lógica para el clic en la fila (la misma que tenías)
                 Toast.makeText(context, "Tarjeta seleccionada: ${paymentMethod.cardType}", Toast.LENGTH_SHORT).show()
             },
             onDeleteClicked = { paymentMethod ->
-                // NUEVA LÓGICA: Se llama al ViewModel para que borre el método de pago.
                 viewModel.deletePaymentMethod(paymentMethod)
                 Toast.makeText(context, "Método de pago eliminado", Toast.LENGTH_SHORT).show()
             }
         )
-        // =================== FIN DEL CAMBIO ====================
 
         recyclerView.adapter = paymentAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())

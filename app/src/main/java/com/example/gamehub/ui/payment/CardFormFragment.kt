@@ -12,11 +12,7 @@ import com.google.android.material.textfield.TextInputEditText
 
 class CardFormFragment : Fragment(R.layout.fragment_card_form) {
 
-    // ================== INICIO DE LA CORRECCIÓN ==================
-    // Usamos activityViewModels() para compartir la misma instancia del ViewModel
-    // que usa PaymentMethodsFragment.
     private val viewModel: PaymentViewModel by activityViewModels()
-    // =================== FIN DE LA CORRECCIÓN ====================
 
     private lateinit var etCardHolderName: TextInputEditText
     private lateinit var etCardNumber: TextInputEditText
@@ -57,8 +53,6 @@ class CardFormFragment : Fragment(R.layout.fragment_card_form) {
             etCardNumber.error = "El número de tarjeta debe tener 16 dígitos"
             return
         }
-
-        // TODO: Añadir validación más robusta para la fecha de expiración
 
         // Lógica para determinar el tipo de tarjeta (simplificado)
         val cardType = when {

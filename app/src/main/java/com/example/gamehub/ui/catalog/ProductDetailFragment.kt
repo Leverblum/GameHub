@@ -86,7 +86,6 @@ class ProductDetailFragment : Fragment() {
             tvDetailPrice.text = "$${product!!.price.toString()}"
             tvDetailPlatform.text = product!!.category // Usamos 'category'
             tvDetailDescription.text = product!!.description
-            // El campo 'rating' no existe en el modelo Product, lo comentamos o eliminamos
             // tvDetailRating.text = "★ 4.8"
             tvDetailRating.visibility = View.GONE // Ocultamos la vista si no hay dato
         }

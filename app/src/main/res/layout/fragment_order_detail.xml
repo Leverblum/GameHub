@@ -16,7 +16,7 @@
             android:id="@+id/tvOrderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pedido #12345"
+            android:text="@string/pedido_v"
             android:textSize="22sp"
             android:fontFamily="@font/orbitron_bold"
             android:textColor="@color/text_primary"
@@ -26,7 +26,7 @@
             android:id="@+id/tvOrderDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fecha: 05/10/2025"
+            android:text="@string/fecha_v"
             android:fontFamily="@font/inter_18pt_regular"
             android:textColor="@color/text_secondary" />
 
@@ -34,7 +34,7 @@
             android:id="@+id/tvOrderStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estado: Entregado"
+            android:text="@string/estado_v"
             android:fontFamily="@font/inter_18pt_bold"
             android:textColor="@color/color_primary"
             android:layout_marginTop="8dp"
@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Productos comprados"
+            android:text="@string/productos_comprados"
             android:fontFamily="@font/orbitron_bold"
             android:textSize="18sp"
             android:textColor="@color/text_primary"
@@ -74,7 +74,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Subtotal"
+                    android:text="@string/subtotal"
                     android:fontFamily="@font/inter_18pt_regular"
                     android:textColor="@color/text_secondary" />
 
@@ -84,7 +84,7 @@
                     android:id="@+id/tvSubtotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$119.98"
+                    android:text="@string/sub_v"
                     android:fontFamily="@font/inter_18pt_bold"
                     android:textColor="@color/text_primary" />
             </LinearLayout>
@@ -98,7 +98,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Impuestos"
+                    android:text="@string/impuestos"
                     android:fontFamily="@font/inter_18pt_regular"
                     android:textColor="@color/text_secondary" />
 
@@ -108,7 +108,7 @@
                     android:id="@+id/tvTaxes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$22.80"
+                    android:text="@string/impuestos_v"
                     android:fontFamily="@font/inter_18pt_bold"
                     android:textColor="@color/text_primary" />
             </LinearLayout>
@@ -122,7 +122,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total"
+                    android:text="@string/total"
                     android:fontFamily="@font/inter_18pt_bold"
                     android:textColor="@color/text_primary" />
 
@@ -132,7 +132,7 @@
                     android:id="@+id/tvTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$142.78"
+                    android:text="@string/total_v"
                     android:fontFamily="@font/inter_18pt_bold"
                     android:textColor="@color/color_primary" />
             </LinearLayout>

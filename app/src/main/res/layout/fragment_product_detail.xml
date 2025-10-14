@@ -23,7 +23,7 @@
             android:id="@+id/tvDetailTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Título del juego"
+            android:text="@string/titulo_juego"
             android:textSize="20sp"
             android:fontFamily="@font/inter_18pt_bold"
             android:textColor="@color/text_primary"
@@ -33,7 +33,7 @@
             android:id="@+id/tvDetailPlatform"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PC • Acción"
+            android:text="@string/pc_accion"
             android:textSize="14sp"
             android:fontFamily="@font/inter_18pt_medium"
             android:textColor="@color/text_secondary"
@@ -44,7 +44,7 @@
             android:id="@+id/tvDetailRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="★ 4.5"
+            android:text="@string/calificacion_stars"
             android:textSize="14sp"
             android:textColor="@color/warning"
             android:layout_marginTop="8dp" />
@@ -53,7 +53,7 @@
             android:id="@+id/tvDetailPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$59.99"
+            android:text="@string/precio_v"
             android:textSize="18sp"
             android:fontFamily="@font/inter_18pt_bold"
             android:textColor="@color/color_primary"
@@ -63,13 +63,12 @@
             android:id="@+id/tvDetailDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripción larga del juego..."
+            android:text="@string/descripcion_v"
             android:textSize="14sp"
             android:fontFamily="@font/inter_18pt_regular"
             android:textColor="@color/text_secondary"
             android:layout_marginTop="12dp" />
 
-        <!-- Quantity stepper -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,7 +87,7 @@
                 android:id="@+id/tvQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
+                android:text="@string/cantidad_v"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:textSize="16sp"
@@ -111,7 +110,7 @@
                 style="@style/Widget.GameHub.Button.Primary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Agregar al carrito" />
+                android:text="@string/agregar_carrito" />
         </LinearLayout>
 
     </LinearLayout>

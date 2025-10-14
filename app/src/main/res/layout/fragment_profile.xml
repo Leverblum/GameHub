@@ -14,7 +14,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Header / Avatar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/orbitron_bold"
-                android:text="John Doe"
+                android:text="@string/name_profile_v"
                 android:textColor="@color/text_primary"
                 android:textSize="20sp" />
 
@@ -49,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/inter_18pt_regular"
-                android:text="john.doe@email.com"
+                android:text="@string/email_v"
                 android:textColor="@color/text_secondary"
                 android:textSize="14sp" />
 
@@ -62,10 +61,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/inter_18pt_regular"
-            android:text="Cuenta"
+            android:text="@string/cuenta"
             android:textColor="@color/text_primary" />
-
-        <!-- ===================== INICIO DE LA SECCIÓN CORREGIDA ===================== -->
 
         <!-- Opción: Editar Perfil -->
         <LinearLayout
@@ -85,7 +82,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/inter_18pt_medium"
-                android:text="Editar perfil"
+                android:text="@string/editar_perfil"
                 android:textColor="@color/text_primary" />
 
             <ImageView
@@ -114,7 +111,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/inter_18pt_medium"
-                android:text="Historial de compras"
+                android:text="@string/historial_compras"
                 android:textColor="@color/text_primary" />
 
             <ImageView
@@ -143,7 +140,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/inter_18pt_medium"
-                android:text="Métodos de pago"
+                android:text="@string/metodos_pago"
                 android:textColor="@color/text_primary" />
 
             <ImageView
@@ -154,7 +151,6 @@
                 app:tint="@color/text_secondary" />
         </LinearLayout>
 
-        <!-- Opción: Tiendas cercanas -->
         <LinearLayout
             android:id="@+id/option_stores"
             style="@style/Profile.OptionRow"
@@ -172,7 +168,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/inter_18pt_medium"
-                android:text="Tiendas cercanas"
+                android:text="@string/tiendas_cercanas"
                 android:textColor="@color/text_primary" />
 
             <ImageView
@@ -201,7 +197,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/inter_18pt_medium"
-                android:text="Cambiar contraseña"
+                android:text="@string/cambiar_contrasena"
                 android:textColor="@color/text_primary" />
 
             <ImageView
@@ -212,8 +208,6 @@
                 app:tint="@color/text_secondary" />
         </LinearLayout>
 
-        <!-- ===================== FIN DE LA SECCIÓN CORREGIDA ===================== -->
-
         <!-- Logout -->
         <Button
             android:id="@+id/btnLogout"
@@ -221,7 +215,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Cerrar sesión"
+            android:text="@string/cerrar_sesion"
             android:textColor="@color/error" />
 
         <!-- Version / space bottom -->
@@ -231,7 +225,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="32dp"
             android:gravity="center"
-            android:text="GameHub v1.0"
+            android:text="@string/gamehub_version"
             android:textColor="@color/text_secondary"
             android:textSize="12sp" />
     </LinearLayout>

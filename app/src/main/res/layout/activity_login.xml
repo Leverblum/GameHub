@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Inicia Sesión"
+            android:text="@string/inicia_sesion"
             android:textSize="24sp"
             android:fontFamily="@font/inter_18pt_bold"
             android:textColor="@color/black"
@@ -32,7 +32,7 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Correo electrónico"
+            android:hint="@string/correo_electronico"
             android:drawableStart="@drawable/ic_profile"
             android:padding="12dp"
             android:background="@drawable/edittext_background"
@@ -43,7 +43,7 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contraseña"
+            android:hint="@string/contrasena"
             android:drawableStart="@drawable/ic_password"
             android:padding="12dp"
             android:layout_marginTop="16dp"
@@ -55,7 +55,7 @@
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar sesión"
+            android:text="@string/iniciar_sesion"
             android:layout_marginTop="24dp"
             style="@style/Widget.GameHub.Button.Primary" />
 
@@ -64,7 +64,7 @@
             android:id="@+id/tvGoToRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿No tienes cuenta? Regístrate"
+            android:text="@string/no_tienes_cuenta"
             android:textColor="@color/color_primary"
             android:layout_marginTop="16dp" />
 

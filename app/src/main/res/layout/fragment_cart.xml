@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tu carrito"
+        android:text="@string/tu_carrito"
         android:textSize="20sp"
         android:fontFamily="@font/orbitron_bold"
         android:textColor="@color/text_primary"
@@ -55,7 +55,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Subtotal"
+                        android:text="@string/subtotal"
                         android:fontFamily="@font/inter_18pt_regular"
                         android:textColor="@color/text_secondary" />
 
@@ -68,7 +68,7 @@
                         android:id="@+id/tvSubtotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$119.98"
+                        android:text="@string/sub_total"
                         android:fontFamily="@font/inter_18pt_bold"
                         android:textColor="@color/text_primary" />
                 </LinearLayout>
@@ -83,7 +83,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Impuestos"
+                        android:text="@string/impuestos"
                         android:fontFamily="@font/inter_18pt_regular"
                         android:textColor="@color/text_secondary" />
 
@@ -96,7 +96,7 @@
                         android:id="@+id/tvTaxes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$22.80"
+                        android:text="@string/impuestos_v"
                         android:fontFamily="@font/inter_18pt_regular"
                         android:textColor="@color/text_primary" />
                 </LinearLayout>
@@ -111,7 +111,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total"
+                        android:text="@string/total"
                         android:fontFamily="@font/inter_18pt_bold"
                         android:textColor="@color/text_primary" />
 
@@ -124,7 +124,7 @@
                         android:id="@+id/tvTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$142.78"
+                        android:text="@string/total_v"
                         android:fontFamily="@font/inter_18pt_bold"
                         android:textColor="@color/text_primary" />
                 </LinearLayout>
@@ -135,7 +135,7 @@
                     style="@style/Widget.GameHub.Button.Primary"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:text="Finalizar compra"
+                    android:text="@string/finalizar_compra"
                     android:layout_marginTop="16dp" />
             </LinearLayout>
         </LinearLayout>

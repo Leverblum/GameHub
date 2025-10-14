@@ -12,7 +12,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- AppBar simple: logo + título -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -30,7 +29,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GameHub"
+                android:text="@string/app_name"
                 android:layout_marginStart="12dp"
                 android:textSize="20sp"
                 android:fontFamily="@font/orbitron_bold"
@@ -65,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:layout_marginTop="12dp"
-            android:hint="Buscar juegos..."
+            android:hint="@string/buscar_juegos"
             android:drawableStart="@drawable/ic_search"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
@@ -77,7 +76,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Recomendados"
+            android:text="@string/recomendados"
             android:textSize="18sp"
             android:fontFamily="@font/inter_18pt_bold"
             android:textColor="@color/text_primary"
@@ -95,7 +94,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Últimos lanzamientos"
+            android:text="@string/ultimos_lanzamientos"
             android:textSize="18sp"
             android:fontFamily="@font/inter_18pt_bold"
             android:textColor="@color/text_primary"

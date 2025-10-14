@@ -20,14 +20,11 @@ class CheckoutViewModel(application: Application) : AndroidViewModel(application
         val cartItems = cartViewModel.cartItems.value
 
         if (userEmail != null && !cartItems.isNullOrEmpty()) {
-            // ================== INICIO DE LA CORRECCIÓN ==================
-            // Calculamos el subtotal usando los métodos de BigDecimal
+
             val subtotal = cartItems.fold(BigDecimal.ZERO) { acc, cartItem ->
                 acc + cartItem.product.price.multiply(BigDecimal(cartItem.quantity))
             }
-            // Calculamos el total con impuestos
             val totalAmount = subtotal.multiply(BigDecimal("1.19"))
-            // =================== FIN DE LA CORRECCIÓN ====================
 
             val newOrder = Order(
                 id = UUID.randomUUID().toString().substring(0, 6).uppercase(),

@@ -31,7 +31,7 @@
                 android:id="@+id/tvStoreName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GameHub Centro"
+                android:text="@string/gamehub_centro"
                 android:fontFamily="@font/inter_18pt_bold"
                 android:textColor="@color/text_primary"/>
 
@@ -39,7 +39,7 @@
                 android:id="@+id/tvStoreAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Av. Libertador 1234"
+                android:text="@string/tienda_dir"
                 android:fontFamily="@font/inter_18pt_regular"
                 android:textColor="@color/text_secondary"
                 android:layout_marginTop="4dp"/>
@@ -49,7 +49,7 @@
             android:id="@+id/tvStoreDistance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0.8 km"
+            android:text="@string/distancia_v"
             android:fontFamily="@font/inter_18pt_medium"
             android:textColor="@color/color_primary"/>
     </LinearLayout>
@@ -59,6 +59,6 @@
         style="@style/Widget.GameHub.Button.Primary"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:text="Ver más" />
+        android:text="@string/ver_mas" />
 
 </LinearLayout>

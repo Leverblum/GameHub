@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Añadir Nueva Tarjeta"
+            android:text="@string/nueva_tarjeta"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_gravity="center"
             android:layout_marginBottom="32dp"/>
@@ -31,7 +31,7 @@
                 android:id="@+id/etCardHolderName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre del Titular"
+                android:hint="@string/nombre_titular"
                 android:inputType="textPersonName"
                 android:maxLines="1"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -47,7 +47,7 @@
                 android:id="@+id/etCardNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Número de Tarjeta"
+                android:hint="@string/numero_tarjeta"
                 android:inputType="number"
                 android:maxLength="16"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -71,7 +71,7 @@
                     android:id="@+id/etExpiryDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="MM/AA"
+                    android:hint="@string/mes_ano"
                     android:inputType="date"
                     android:maxLength="5"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -88,7 +88,7 @@
                     android:id="@+id/etCvv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="CVV"
+                    android:hint="@string/cvv"
                     android:inputType="numberPassword"
                     android:maxLength="3"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:padding="12dp"
-            android:text="Guardar Tarjeta"
+            android:text="@string/guardar_tarjeta"
             app:cornerRadius="8dp"/>
 
     </LinearLayout>

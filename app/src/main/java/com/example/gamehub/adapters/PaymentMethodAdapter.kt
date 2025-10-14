@@ -15,9 +15,7 @@ class PaymentMethodAdapter(
     private val onItemClicked: (PaymentMethod) -> Unit,
     private val onDeleteClicked: (PaymentMethod) -> Unit
 ) : ListAdapter<PaymentMethod, PaymentMethodAdapter.PaymentViewHolder>(DiffCallback) {
-// =================== FIN DEL CAMBIO ====================
 
-    // El ViewHolder ahora también tiene una referencia al botón de borrar.
     class PaymentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val iconView: ImageView = itemView.findViewById(R.id.img_payment_icon)
         private val nameView: TextView = itemView.findViewById(R.id.tv_payment_name)
@@ -26,7 +24,6 @@ class PaymentMethodAdapter(
         fun bind(paymentMethod: PaymentMethod) {
             nameView.text = "${paymentMethod.cardType} **** ${paymentMethod.cardNumber.takeLast(4)}"
 
-            // He mejorado esta lógica para que uses tus futuros íconos si los tienes
             val iconRes = when {
                 paymentMethod.cardNumber.startsWith("4") -> R.drawable.ic_card
                 paymentMethod.cardNumber.startsWith("5") -> R.drawable.ic_card

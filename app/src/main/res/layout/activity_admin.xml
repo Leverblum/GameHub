@@ -13,19 +13,19 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- 🧑‍💼 Encabezado -->
+        <!-- Encabezado -->
         <TextView
             android:id="@+id/tvAdminTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Panel de Administración"
+            android:text="@string/panel_administracion"
             android:textSize="22sp"
             android:textStyle="bold"
             android:fontFamily="@font/orbitron_bold"
             android:textColor="@color/text_primary"
             android:layout_marginBottom="24dp" />
 
-        <!-- 📦 Gestión de productos -->
+        <!-- Gestión de productos -->
         <LinearLayout
             android:id="@+id/optManageProducts"
             android:layout_width="match_parent"
@@ -46,7 +46,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Gestionar Productos"
+                android:text="@string/gestionar_productos"
                 android:textSize="16sp"
                 android:fontFamily="@font/inter_18pt_medium"
                 android:textColor="@color/text_primary"
@@ -60,7 +60,7 @@
                 app:tint="@color/text_secondary" />
         </LinearLayout>
 
-        <!-- 👤 Gestión de usuarios -->
+        <!-- Gestión de usuarios -->
         <LinearLayout
             android:id="@+id/optManageUsers"
             android:layout_width="match_parent"
@@ -81,7 +81,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Gestionar Usuarios"
+                android:text="@string/gestionar_usuarios"
                 android:textSize="16sp"
                 android:fontFamily="@font/inter_18pt_medium"
                 android:textColor="@color/text_primary"
@@ -95,7 +95,7 @@
                 app:tint="@color/text_secondary" />
         </LinearLayout>
 
-        <!-- 🧩 Contenedor donde se cargarán los fragmentos -->
+        <!-- Contenedor donde se cargarán los fragmentos -->
         <FrameLayout
             android:id="@+id/adminFragmentContainer"
             android:layout_width="match_parent"

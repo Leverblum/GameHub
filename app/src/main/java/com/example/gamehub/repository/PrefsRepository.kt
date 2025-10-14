@@ -72,8 +72,6 @@ class PrefsRepository(context: Context) {
         saveCartItems(items)
     }
 
-    // ================== INICIO DE LA CORRECCIÓN ==================
-    // Se elimina el .toString() para que el tipo de 'id' (Int) coincida.
     fun addGameToCart(game: Game) {
         val product = Product(
             id = game.id,

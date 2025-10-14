@@ -18,9 +18,6 @@ class StoresViewModel : ViewModel() {
     }
 
     private fun loadStores() {
-        // ================== DATOS ADAPTADOS A TU DISEÑO ==================
-        // Creamos una lista de tiendas con los campos que tu modelo 'Store' necesita ahora.
-        // He eliminado el campo 'hours' de la creación de los objetos.
         val hardcodedStores = listOf(
             Store(
                 id = 1,

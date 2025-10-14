@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tiendas cercanas"
+            android:text="@string/tiendas_cercanas"
             android:textSize="20sp"
             android:fontFamily="@font/orbitron_bold"
             android:textColor="@color/text_primary"
@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mapa (simulado)"
+                android:text="@string/mapa_simulado"
                 android:layout_gravity="center"
                 android:fontFamily="@font/inter_18pt_regular"
                 android:textColor="@color/text_secondary"

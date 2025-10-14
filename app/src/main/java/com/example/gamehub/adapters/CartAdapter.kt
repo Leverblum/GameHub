@@ -18,8 +18,6 @@ class CartAdapter(
     private val cartViewModel: CartViewModel
 ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
-    // ================== INICIO DE LA CORRECCIÓN ==================
-    // ViewHolder ahora busca los IDs de 'item_cart_product.xml'
     class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemImage: ImageView = itemView.findViewById(R.id.ivCartProductImage)
         val itemTitle: TextView = itemView.findViewById(R.id.tvCartProductName)
@@ -29,15 +27,12 @@ class CartAdapter(
         val btnMinus: ImageButton = itemView.findViewById(R.id.btnMinus)
         val btnRemove: ImageButton = itemView.findViewById(R.id.btnRemoveItem)
     }
-    // =================== FIN DE LA CORRECCIÓN ====================
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
-        // ======================= CAMBIO CLAVE =======================
-        // Inflamos TU layout existente: 'item_cart_product.xml'.
+
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_cart_product, parent, false)
         return CartViewHolder(view)
-        // ==========================================================
     }
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
@@ -48,7 +43,6 @@ class CartAdapter(
 
         val currencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
         holder.itemPrice.text = currencyFormat.format(item.product.price)
-        // holder.itemImage.load(item.product.imageUrl) // Aquí usarías Glide/Picasso
 
         // La lógica de los clics ahora apunta a los botones correctos
         holder.btnPlus.setOnClickListener {
@@ -68,9 +62,6 @@ class CartAdapter(
 
     override fun getItemCount() = items.size
 
-    /**
-     * Este método es llamado por el observador en CartFragment para refrescar la lista.
-     */
     fun updateItems(newItems: List<CartItem>) {
         items.clear()
         items.addAll(newItems)

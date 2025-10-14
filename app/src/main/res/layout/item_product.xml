@@ -33,7 +33,7 @@
                 android:layout_margin="8dp"
                 android:padding="4dp"
                 android:background="@drawable/badge_background"
-                android:text="Disponible"
+                android:text="@string/disponible"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 
@@ -49,7 +49,7 @@
                 android:id="@+id/tvProductTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Título del juego"
+                android:text="@string/titulo_juego"
                 android:textSize="16sp"
                 android:fontFamily="@font/inter_18pt_medium"
                 android:textColor="@color/text_primary"
@@ -67,7 +67,7 @@
                     android:id="@+id/tvPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$59.99"
+                    android:text="@string/precio_v"
                     android:textSize="16sp"
                     android:fontFamily="@font/inter_18pt_bold"
                     android:textColor="@color/color_primary" />

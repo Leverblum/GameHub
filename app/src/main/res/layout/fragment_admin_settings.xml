@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Configuración del sistema"
+        android:text="@string/configuracion_sistema"
         android:textSize="20sp"
         android:fontFamily="@font/inter_18pt_bold"
         android:textColor="@color/text_primary"
@@ -36,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Preferencias generales"
+            android:text="@string/preferencias_generales"
             android:textSize="16sp"
             android:layout_marginStart="12dp"
             android:textColor="@color/text_primary" />
@@ -69,7 +69,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Notificaciones"
+            android:text="@string/notificaciones"
             android:textSize="16sp"
             android:layout_marginStart="12dp"
             android:textColor="@color/text_primary" />
@@ -102,7 +102,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Seguridad y privacidad"
+            android:text="@string/seguridad_privacidad"
             android:textSize="16sp"
             android:layout_marginStart="12dp"
             android:textColor="@color/text_primary" />
@@ -135,7 +135,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Centro de ayuda"
+            android:text="@string/centro_ayuda"
             android:textSize="16sp"
             android:layout_marginStart="12dp"
             android:textColor="@color/text_primary" />
@@ -167,7 +167,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Acerca de GameHub"
+            android:text="@string/acerca_gamehub"
             android:textSize="16sp"
             android:layout_marginStart="12dp"
             android:textColor="@color/text_primary" />

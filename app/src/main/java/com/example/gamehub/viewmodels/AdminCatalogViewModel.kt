@@ -16,7 +16,6 @@ class AdminCatalogViewModel : ViewModel() {
     }
 
     private fun loadProducts() {
-        // En una app real, estos datos vendrían de una API o base de datos.
         val hardcodedProducts = listOf(
             Product(1, "The Last of Us Part II", "Aventura y acción post-apocalíptica.", BigDecimal("59.99"), 30, "PS4", isActive = true),
             Product(2, "Cyberpunk 2077", "RPG de mundo abierto en Night City.", BigDecimal("49.99"), 15, "PC", isActive = true),

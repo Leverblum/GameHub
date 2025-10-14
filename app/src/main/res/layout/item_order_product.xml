@@ -29,7 +29,7 @@
             android:id="@+id/tvProductName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre del producto"
+            android:text="@string/nombre_producto"
             android:fontFamily="@font/inter_18pt_bold"
             android:textColor="@color/text_primary" />
 
@@ -37,7 +37,7 @@
             android:id="@+id/tvProductQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cantidad: 2"
+            android:text="@string/cantidad_c"
             android:fontFamily="@font/inter_18pt_regular"
             android:textColor="@color/text_secondary"
             android:layout_marginTop="4dp" />
@@ -47,7 +47,7 @@
             android:id="@+id/tvProductCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Categoría"
+            android:text="@string/categoria"
             android:fontFamily="@font/inter_18pt_regular"
             android:textColor="@color/text_secondary"
             android:layout_marginTop="4dp" />
@@ -58,12 +58,11 @@
         android:id="@+id/tvProductPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$59.99"
+        android:text="@string/precio_v"
         android:fontFamily="@font/inter_18pt_bold"
         android:textColor="@color/text_primary"
         android:layout_marginEnd="8dp" />
 
-    <!-- 🔹 Botones de acción -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,7 +75,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_edit"
             android:backgroundTint="@color/purple_500"
-            android:contentDescription="Editar producto" />
+            android:contentDescription="@string/editar_producto" />
 
         <ImageButton
             android:id="@+id/btnDelete"
@@ -85,7 +84,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_delete"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:contentDescription="Eliminar producto" />
+            android:contentDescription="@string/eliminar_producto" />
     </LinearLayout>
 
 </LinearLayout>

@@ -7,19 +7,19 @@
     android:padding="16dp"
     android:background="@color/color_background">
 
-    <!-- 👤 Título -->
+    <!-- Título -->
     <TextView
         android:id="@+id/tvManageUsersTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gestión de Usuarios"
+        android:text="@string/gestion_usuarios"
         android:textSize="22sp"
         android:textStyle="bold"
         android:fontFamily="@font/orbitron_bold"
         android:textColor="@color/text_primary"
         android:layout_marginBottom="12dp" />
 
-    <!-- 🔍 Barra de búsqueda -->
+    <!-- Barra de búsqueda -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -44,7 +44,7 @@
                 android:id="@+id/etSearchUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Buscar usuario..."
+                android:hint="@string/buscar_usuario"
                 android:background="@null"
                 android:paddingStart="8dp"
                 android:textColor="@color/text_primary"
@@ -52,7 +52,7 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- 📃 Lista de usuarios -->
+    <!-- Lista de usuarios -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvUsers"
         android:layout_width="match_parent"
@@ -60,14 +60,14 @@
         android:layout_weight="1"
         android:clipToPadding="false" />
 
-    <!-- ➕ Botón para agregar usuario -->
+    <!-- Botón para agregar usuario -->
     <Button
         android:id="@+id/btnAddUser"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:drawableStart="@drawable/ic_add"
-        android:text="Agregar usuario"
+        android:text="@string/agregar_usuario"
         android:drawablePadding="8dp"
         android:fontFamily="@font/inter_18pt_medium"
         android:textAllCaps="false"

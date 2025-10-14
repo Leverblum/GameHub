@@ -43,8 +43,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 // Si el usuario no es nulo, actualizamos la UI del perfil
                 tvProfileName.text = it.name
                 tvProfileEmail.text = it.email
-                // Aquí podrías usar Glide o Picasso para cargar el avatar real
-                // ivAvatar.load(it.avatarUrl)
             }
         }
 
@@ -67,15 +65,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             profileViewModel.logout()
         }
 
-        // ================== INICIO DEL CAMBIO ==================
-        // Listener para "Editar Perfil" ahora navega al fragmento de edición
         optEditProfile.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, EditProfileFragment()) // Navega a EditProfileFragment
                 .addToBackStack(null) // Permite volver atrás al perfil
                 .commit()
         }
-        // =================== FIN DEL CAMBIO ====================
 
         optOrderHistory.setOnClickListener {
             parentFragmentManager.beginTransaction()

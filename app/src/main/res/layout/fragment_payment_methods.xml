@@ -21,7 +21,7 @@
         android:id="@+id/tvNoPaymentMethodsMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No tienes métodos de pago guardados.\n¡Añade uno nuevo!"
+        android:text="@string/no_metodos_pago"
         android:textSize="16sp"
         android:gravity="center"
         android:visibility="gone"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:contentDescription="Añadir nuevo método de pago"
-        app:srcCompat="@drawable/ic_add" /> <!-- Asume que tienes un ícono de 'add' -->
+        android:contentDescription="@string/anadir_nuevo_metodo"
+        app:srcCompat="@drawable/ic_add" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

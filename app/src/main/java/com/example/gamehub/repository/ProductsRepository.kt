@@ -14,7 +14,7 @@ class ProductsRepository(context: Context) {
         private const val KEY_PRODUCTS = "products_list"
     }
 
-    // 🟢 Obtener todos los productos
+    // Obtener todos los productos
     fun getProducts(): MutableList<Product> {
         val json = prefs.getString(KEY_PRODUCTS, null)
         return if (!json.isNullOrEmpty()) {
@@ -25,20 +25,20 @@ class ProductsRepository(context: Context) {
         }
     }
 
-    // 🟣 Guardar lista completa
+    // Guardar lista completa
     private fun saveProducts(products: List<Product>) {
         val json = gson.toJson(products)
         prefs.edit().putString(KEY_PRODUCTS, json).apply()
     }
 
-    // 🟩 Agregar un nuevo producto
+    // Agregar un nuevo producto
     fun addProduct(product: Product) {
         val products = getProducts()
         products.add(product.copy(id = generateProductId(products)))
         saveProducts(products)
     }
 
-    // 🟡 Editar producto existente
+    // Editar producto existente
     fun updateProduct(updated: Product) {
         val products = getProducts()
         val index = products.indexOfFirst { it.id == updated.id }
@@ -48,13 +48,13 @@ class ProductsRepository(context: Context) {
         }
     }
 
-    // 🔴 Eliminar producto
+    // Eliminar producto
     fun deleteProduct(id: Int) {
         val products = getProducts().filter { it.id != id }
         saveProducts(products)
     }
 
-    // 🆔 Generar ID autoincremental
+    // Generar ID autoincremental
     private fun generateProductId(products: List<Product>): Int {
         return if (products.isEmpty()) 1 else (products.maxOf { it.id } + 1)
     }

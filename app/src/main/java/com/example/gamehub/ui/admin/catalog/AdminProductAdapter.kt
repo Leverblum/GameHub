@@ -38,12 +38,12 @@ class AdminProductAdapter(
         holder.tvCategory.text = product.category
         holder.tvPrice.text = "$${product.price}"
 
-        // 🟢 Acciones de editar y eliminar
+        // Acciones de editar y eliminar
         holder.btnEdit.setOnClickListener { onEdit(product) }
         holder.btnDelete.setOnClickListener { onDelete(product) }
     }
 
-    // 🔄 Actualiza la lista visual
+    // Actualiza la lista visual
     fun updateList(newProducts: List<Product>) {
         products.clear()
         products.addAll(newProducts)

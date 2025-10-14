@@ -15,7 +15,7 @@
         android:autofillHints=""
         android:background="@drawable/edittext_background"
         android:drawableStart="@drawable/ic_search"
-        android:hint="Buscar en catálogo..."
+        android:hint="@string/buscar_catalogo"
         android:inputType="text"
         android:paddingStart="12dp"
         android:paddingEnd="12dp" />
@@ -28,10 +28,6 @@
         android:overScrollMode="never"
         android:scrollbars="none">
 
-        <!--
-            CORRECCIÓN: Se eliminó el atributo android:gap="8dp" de este LinearLayout,
-            ya que no es válido. El espaciado se controla con márgenes en los elementos hijos.
-        -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +39,7 @@
                 style="@style/Widget.GameHub.Button.Secondary"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:text="Todos" />
+                android:text="@string/todos" />
 
             <Button
                 android:id="@+id/btnFilterPS"
@@ -51,9 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:layout_marginStart="8dp"
-                android:text="PlayStation" />
-
-
+                android:text="@string/playstation" />
 
         </LinearLayout>
     </HorizontalScrollView>

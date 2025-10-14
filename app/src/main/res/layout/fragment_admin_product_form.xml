@@ -26,14 +26,14 @@
             style="@style/Widget.GameHub.Button.Secondary"
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Seleccionar imagen" />
+            android:text="@string/seleccionar_imagen" />
 
         <!-- Nombre del juego -->
         <EditText
             android:id="@+id/etProductName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre del juego"
+            android:hint="@string/nombre_juego"
             android:layout_marginTop="16dp"
             android:background="@drawable/input_background"
             android:padding="12dp"
@@ -45,7 +45,7 @@
             android:id="@+id/etProductCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Categoría"
+            android:hint="@string/categoria"
             android:layout_marginTop="12dp"
             android:background="@drawable/input_background"
             android:padding="12dp"
@@ -57,7 +57,7 @@
             android:id="@+id/etProductPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Precio"
+            android:hint="@string/precio"
             android:inputType="numberDecimal"
             android:layout_marginTop="12dp"
             android:background="@drawable/input_background"
@@ -70,7 +70,7 @@
             android:id="@+id/etProductStock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Cantidad en stock"
+            android:hint="@string/cantidad_stock"
             android:inputType="number"
             android:layout_marginTop="12dp"
             android:background="@drawable/input_background"
@@ -83,7 +83,7 @@
             android:id="@+id/etProductDescription"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:hint="Descripción del juego"
+            android:hint="@string/descripcion_juego"
             android:gravity="top"
             android:layout_marginTop="12dp"
             android:background="@drawable/input_background"
@@ -97,7 +97,7 @@
             style="@style/Widget.GameHub.Button.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guardar"
+            android:text="@string/guardar"
             android:layout_marginTop="16dp" />
 
     </LinearLayout>

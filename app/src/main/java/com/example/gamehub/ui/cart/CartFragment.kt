@@ -22,7 +22,6 @@ import kotlin.collections.sumOf
 
 class CartFragment : Fragment() {
 
-    // CAMBIO: Obtenemos la instancia del ViewModel compartida
     private val cartViewModel: CartViewModel by activityViewModels()
 
     private lateinit var rvCartItems: RecyclerView
@@ -42,7 +41,6 @@ class CartFragment : Fragment() {
         setupRecyclerView()
         setupClickListeners()
 
-        // CAMBIO CLAVE: Nos suscribimos a los cambios del carrito
         observeCartChanges()
 
         return view
@@ -58,7 +56,6 @@ class CartFragment : Fragment() {
 
     private fun setupRecyclerView() {
         // El adaptador necesita recibir el ViewModel para que los botones de +/- dentro del carrito funcionen
-        // Asumimos que el constructor de CartAdapter se ha ajustado para esto
         cartAdapter = CartAdapter(mutableListOf(), cartViewModel)
         rvCartItems.layoutManager = LinearLayoutManager(context)
         rvCartItems.adapter = cartAdapter
