@@ -37,8 +37,9 @@ class ProductAdapter(
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = products[position]
         holder.productTitle.text = product.name
-        holder.productPrice.text = String.format("$%.2f", product.price)
-        holder.productImage.setImageResource(R.drawable.ic_gamepad) // Placeholder
+        holder.productPrice.text = String.format("$%.2f", product.price.toDouble())
+
+        holder.productImage.setImageResource(product.imageResId)
 
         holder.root.setOnClickListener {
             onProductClick?.invoke(product)

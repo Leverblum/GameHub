@@ -1,5 +1,6 @@
 package com.example.gamehub.repository
 
+import com.example.gamehub.R
 import android.content.Context
 import com.example.gamehub.models.CartItem
 import com.example.gamehub.models.Game
@@ -76,11 +77,11 @@ class PrefsRepository(context: Context) {
         val product = Product(
             id = game.id,
             name = game.title,
-            description = "Juego disponible en GameHub", // valor por defecto ya que Game no tiene description
+            description = "Juego disponible en GameHub",
             price = (game.price),
-            stock = 10, // valor fijo o configurable
-            category = "Videojuego", // categoría genérica
-            imageUrl = game.imageUrl,
+            stock = 10,
+            category = "Videojuego",
+            imageResId = R.drawable.ic_gamepad,
             isActive = true
         )
         addProductToCart(product)

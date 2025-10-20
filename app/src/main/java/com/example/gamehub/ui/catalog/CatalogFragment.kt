@@ -55,14 +55,17 @@ class CatalogFragment : Fragment() {
 
     private fun createSampleCatalogProducts(): List<Product> {
         return listOf(
-            Product(1, "The Legend of Zelda: Breath of the Wild", "", BigDecimal(59.99), 10,"","url_imagen_1"),
-            Product(2, "Red Dead Redemption 2","", BigDecimal(49.99),10,"", "url_imagen_2"),
-            Product(3, "Cyberpunk 2077","", BigDecimal(39.99),10,"", "url_imagen_3"),
-            Product(4, "Elden Ring","", BigDecimal(59.99),10, "","url_imagen_4"),
-            Product(8, "Diablo IV","", BigDecimal(69.99),10, "","url_imagen_8"),
-            Product(9, "Starfield","", BigDecimal(69.99),10, "","url_imagen_9"),
-            Product(10, "Baldur's Gate 3","", BigDecimal(59.99),10, "","url_imagen_10"),
-            Product(11, "Hogwarts Legacy","", BigDecimal(69.99) , 10,"","url_imagen_11")
+            Product(1, "The Legend of Zelda", "Aventura épica en Hyrule", BigDecimal("59.99"), 10, "Nintendo Switch", R.drawable.ic_zelda, true),
+            Product(2, "Red Dead Redemption 2", "La historia de Arthur Morgan", BigDecimal("39.99"), 20, "PlayStation 4", R.drawable.ic_rdr, true),
+            Product(3, "Elden Ring", "Levántate, Sinluz", BigDecimal("59.99"), 15, "PC", R.drawable.ic_eldenring, true),
+            Product(4, "Cyberpunk 2077", "Explora Night City", BigDecimal("49.99"), 25, "PC", R.drawable.ic_ciberpunk, true),
+            Product(5, "God of War: Ragnarök", "El fin se acerca", BigDecimal("69.99"), 5, "PlayStation 5", R.drawable.ic_gowragnarok, true),
+            Product(6, "Stardew Valley", "Crea la granja de tus sueños", BigDecimal("14.99"), 100, "PC", R.drawable.ic_stardewvalley, true),
+            Product(7, "Hollow Knight", "Aventura en un reino de insectos", BigDecimal("14.99"), 50, "PC", R.drawable.ic_hollowknigth, true),
+            Product(8, "Diablo IV", "El regreso de Lilith", BigDecimal("69.99"), 30, "PC", R.drawable.ic_diabloiv, true),
+            Product(9, "Starfield", "Aventura espacial de Bethesda", BigDecimal("69.99"), 12, "Xbox", R.drawable.ic_starfield, true),
+            Product(10, "Baldur's Gate 3", "RPG basado en D&D", BigDecimal("59.99"), 18, "PC", R.drawable.ic_baldursgate, true),
+            Product(11, "Hogwarts Legacy", "Vive el mundo mágico", BigDecimal("69.99"), 22, "PlayStation 5", R.drawable.ic_howartslegacy, true)
         )
     }
 }

@@ -42,9 +42,10 @@ class CartAdapter(
         holder.itemQuantity.text = item.quantity.toString()
 
         val currencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
-        holder.itemPrice.text = currencyFormat.format(item.product.price)
+        holder.itemPrice.text = currencyFormat.format(item.product.price.toDouble())
 
-        // La lógica de los clics ahora apunta a los botones correctos
+        holder.itemImage.setImageResource(item.product.imageResId)
+
         holder.btnPlus.setOnClickListener {
             val newQuantity = item.quantity + 1
             cartViewModel.updateItemQuantity(item, newQuantity)

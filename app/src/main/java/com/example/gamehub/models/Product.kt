@@ -1,5 +1,6 @@
 package com.example.gamehub.models
 
+import androidx.annotation.DrawableRes
 import java.math.BigDecimal
 
 data class Product(
@@ -9,6 +10,6 @@ data class Product(
     var price: BigDecimal,
     var stock: Int,
     var category: String,
-    var imageUrl: String? = null,
+    @DrawableRes var imageResId: Int,
     var isActive: Boolean = true
 )

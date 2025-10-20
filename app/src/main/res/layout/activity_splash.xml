@@ -14,22 +14,11 @@
         <!-- Logo temporal -->
         <ImageView
             android:id="@+id/logoImage"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/ic_gamepad"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:src="@drawable/ic_logo"
             android:contentDescription="@string/app_name"
-            android:layout_marginBottom="24dp" />
-
-        <!-- Nombre de la app -->
-        <TextView
-            android:id="@+id/appName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/orbitron_bold"
-            android:textColor="@color/black" />
+            android:layout_marginTop="120dp" />
 
     </LinearLayout>
 </ScrollView>

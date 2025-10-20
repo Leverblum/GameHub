@@ -32,8 +32,7 @@ class AdminProductAdapter(
             categoryTextView.text = product.category
             priceTextView.text = formatPrice(product.price.toDouble())
 
-            // Lógica para cargar imagen (ej. con Glide/Coil)
-            // Glide.with(itemView.context).load(product.imageUrl).into(imageView)
+            imageView.setImageResource(product.imageResId)
 
             editButton.setOnClickListener { onEdit(product) }
             deleteButton.setOnClickListener { onDelete(product) }
