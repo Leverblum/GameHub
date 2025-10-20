@@ -91,19 +91,21 @@ class LoginActivity : AppCompatActivity() {
         if (foundUser != null) {
             prefsRepository.setActiveUserEmail(foundUser.email)
 
-            if (foundUser.role.equals("admin", ignoreCase = true)) {
+            val destinationActivity = if (foundUser.role.equals("admin", ignoreCase = true)) {
                 Toast.makeText(this, "Bienvenido, Admin ${foundUser.name}!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, AdminActivity::class.java)
-                startActivity(intent)
-                finish()
+                AdminActivity::class.java
             } else {
                 Toast.makeText(this, "¡Bienvenido de nuevo, ${foundUser.name}!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                }
-                startActivity(intent)
+                MainActivity::class.java
             }
+
+            val intent = Intent(this, destinationActivity).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+            startActivity(intent)
+
             finish()
+
         } else {
             Toast.makeText(this, "Email o contraseña incorrectos", Toast.LENGTH_SHORT).show()
         }

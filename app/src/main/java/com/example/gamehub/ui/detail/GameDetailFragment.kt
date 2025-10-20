@@ -35,12 +35,73 @@ class GameDetailFragment : Fragment(R.layout.fragment_product_detail) {
 
         currentProduct?.let { product ->
             titleTextView.text = product.name
-            // Usamos .toDouble() para compatibilidad si la lógica de formato de texto lo requiere,
-            // pero es mejor formatear desde BigDecimal si es posible.
             priceTextView.text = "$${product.price.toString()}"
-            descriptionTextView.text = product.description // Usamos la descripción real del producto
-            // imageView.load(product.imageUrl)
+            descriptionTextView.text = product.description
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            imageView.setImageResource(product.imageResId)
             addToCartButton.setOnClickListener {
                 cartViewModel.addProductToCart(product)
                 Toast.makeText(context, "${product.name} añadido al carrito", Toast.LENGTH_SHORT).show()
